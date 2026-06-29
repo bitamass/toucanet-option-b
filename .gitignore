@@ -1,0 +1,13 @@
+﻿filtered_clips_1/
+filtered_clips_2/
+filtered_clips_3/
+filtered_clips_4/
+filtered_clips_5/
+filtered_clips_6/
+Audio Moth 2/
+*.npy
+*.wav
+__pycache__/
+.venv/
+.idea/
+*.zip

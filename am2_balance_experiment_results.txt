@@ -1,0 +1,14 @@
+AM2 Balance Experiment Results
+==================================================
+
+Simulation clips: 453
+Available baseline clips: 2263
+
+Ratio    Base clips   Thresh    Precision   Recall     F1    Beat?
+------------------------------------------------------------
+1:1      453          0.488         0.831    0.914  0.871      YES
+2:1      906          0.509         0.715    0.909  0.800      YES
+3:1      1359         0.689         0.700    0.780  0.738      YES
+5:1      2263         0.524         0.523    0.901  0.662       no
+
+Class balance WAS the problem.

@@ -1,0 +1,70 @@
+AM2 Classifier Results -- Time-Controlled
+==================================================
+
+n_segments:   27403
+n_clips:      2716
+n_features:   102
+sim segs:     4359
+base segs:    23044
+sim hours:    [np.int64(6), np.int64(7), np.int64(15), np.int64(16)]
+
+Segment level (t=0.50)
+              precision    recall  f1-score   support
+
+    baseline       0.98      0.83      0.90     23044
+  simulation       0.51      0.91      0.65      4359
+
+    accuracy                           0.85     27403
+   macro avg       0.74      0.87      0.78     27403
+weighted avg       0.91      0.85      0.86     27403
+
+Precision 0.510  Recall 0.909  F1 0.653
+
+Threshold tuned (t=0.524)
+Precision 0.523  Recall 0.901  F1 0.662
+Not yet beating baseline
+
+Clip voting (frac=0.5)
+              precision    recall  f1-score   support
+
+    baseline       0.98      0.84      0.91      2263
+  simulation       0.54      0.92      0.68       453
+
+    accuracy                           0.85      2716
+   macro avg       0.76      0.88      0.79      2716
+weighted avg       0.91      0.85      0.87      2716
+
+Precision 0.536  Recall 0.918  F1 0.677
+Not yet beating baseline
+
+Breakdown by simulation type:
+  ['Human Presence on Trail']               385/421  (91.4%)
+  ['Human Presence on Trail', 'Vehicle']    30/31  (96.8%)
+  ['Human Presence on Trail', 'Chainsaw']   1/1  (100.0%)
+
+Comparison with AM4:
+  AM4: precision=0.704  recall=0.851
+  AM2: precision=0.523  recall=0.901
+  Diff: precision-0.181  recall+0.050
+
+Top 20 features:
+   1. z_bandwidth_mean                     coef=+5.3473
+   2. mfcc_mean_9                          coef=-5.2820
+   3. bandwidth_mean                       coef=-5.0129
+   4. mfcc_mean_6                          coef=+4.8704
+   5. mfcc_mean_2                          coef=+4.8205
+   6. mfcc_mean_5                          coef=-3.7810
+   7. z_mfcc_std_2                         coef=+3.5315
+   8. rolloff_mean                         coef=+3.4903
+   9. mfcc_std_2                           coef=-3.3210
+  10. mfcc_mean_10                         coef=-3.3098
+  11. z_silence_fraction                   coef=+3.2123
+  12. silence_fraction                     coef=-3.1626
+  13. z_mfcc_mean_9                        coef=+3.1313
+  14. z_mfcc_mean_2                        coef=-2.9624
+  15. mfcc_std_11                          coef=-2.9082
+  16. z_mfcc_mean_10                       coef=+2.8296
+  17. z_mfcc_mean_6                        coef=-2.8143
+  18. rms_mean                             coef=-2.4828
+  19. z_mfcc_std_0                         coef=-2.4592
+  20. mfcc_mean_12                         coef=-2.4448

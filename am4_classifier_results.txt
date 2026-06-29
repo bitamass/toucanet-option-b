@@ -1,0 +1,59 @@
+AM4 Feature Matrix -- Classifier Results
+==================================================
+
+n_segments:  5391
+n_clips:     519
+n_features:  102
+sim segs:    926
+base segs:   4465
+
+Segment level (t=0.50)
+              precision    recall  f1-score   support
+
+    baseline       0.99      0.88      0.93      4465
+  simulation       0.63      0.96      0.76       926
+
+    accuracy                           0.90      5391
+   macro avg       0.81      0.92      0.85      5391
+weighted avg       0.93      0.90      0.90      5391
+
+Precision 0.629  Recall 0.959  F1 0.760
+
+Threshold tuned (t=0.709)
+Precision 0.704  Recall 0.851  F1 0.770
+BEAT baseline
+
+Clip voting (frac=0.5)
+              precision    recall  f1-score   support
+
+    baseline       0.97      0.92      0.95       428
+  simulation       0.70      0.88      0.78        91
+
+    accuracy                           0.91       519
+   macro avg       0.84      0.90      0.86       519
+weighted avg       0.93      0.91      0.92       519
+
+Precision 0.702  Recall 0.879  F1 0.780
+BEAT baseline
+
+Top 20 features:
+   1. rolloff_mean                         coef=+4.2790
+   2. centroid_std                         coef=+4.0105
+   3. mfcc_mean_8                          coef=+3.8667
+   4. z_rolloff_mean                       coef=-3.5905
+   5. z_mfcc_mean_8                        coef=-2.8401
+   6. spec_entropy_mean                    coef=-2.8377
+   7. z_centroid_mean                      coef=+2.8259
+   8. mfcc_mean_7                          coef=+2.7955
+   9. z_rolloff_std                        coef=-2.7854
+  10. mfcc_mean_9                          coef=-2.7667
+  11. z_spec_entropy_mean                  coef=+2.6337
+  12. z_mfcc_mean_9                        coef=+2.6164
+  13. temporal_entropy                     coef=+2.3914
+  14. z_mfcc_mean_3                        coef=-2.3278
+  15. spec_entropy_std                     coef=-2.1424
+  16. z_mfcc_mean_4                        coef=-2.1408
+  17. mfcc_std_11                          coef=-2.0807
+  18. mfcc_mean_11                         coef=+2.0802
+  19. z_mfcc_mean_7                        coef=+2.0257
+  20. mfcc_mean_10                         coef=+2.0256

@@ -1,0 +1,65 @@
+AM6 Classifier Results -- Time-Controlled, 2:1 ratio
+==================================================
+
+n_sim_clips:    310
+n_base_clips:   497
+baseline_ratio: 2:1
+n_segments:     8506
+n_features:     102
+sim_hours:      [np.int64(8), np.int64(9), np.int64(13), np.int64(15), np.int64(16), np.int64(17), np.int64(18)]
+
+Segment level (t=0.50)
+              precision    recall  f1-score   support
+
+    baseline       0.92      0.80      0.86      5303
+  simulation       0.73      0.88      0.80      3203
+
+    accuracy                           0.83      8506
+   macro avg       0.82      0.84      0.83      8506
+weighted avg       0.85      0.83      0.83      8506
+
+Threshold tuned (t=0.442)
+P=0.705  R=0.913  F1=0.795
+BEAT baseline
+
+Clip voting
+              precision    recall  f1-score   support
+
+    baseline       0.93      0.75      0.83       496
+  simulation       0.70      0.91      0.79       310
+
+    accuracy                           0.81       806
+   macro avg       0.81      0.83      0.81       806
+weighted avg       0.84      0.81      0.82       806
+
+P=0.695  R=0.913  F1=0.789
+Not yet beating baseline
+
+By simulation type:
+  ['Human Presence on Trail']                    259/283  (91.5%)
+  ['Human Presence on Trail', 'Vehicle']         6/6  (100.0%)
+  ['Human Presence on Trail', 'Gunshot']         18/19  (94.7%)
+  ['Human Presence on Trail', 'Chainsaw']        0/1  (0.0%)
+  ['Human Presence on Trail', 'Chainsaw', 'Vehicle']  0/1  (0.0%)
+
+Top 20 features:
+   1. z_centroid_mean                      coef=+4.5163
+   2. mfcc_mean_8                          coef=+4.0072
+   3. z_mfcc_mean_12                       coef=-3.6171
+   4. mfcc_std_8                           coef=+3.5674
+   5. z_mfcc_mean_8                        coef=-3.3863
+   6. z_mfcc_std_8                         coef=-3.2208
+   7. mfcc_std_3                           coef=+3.2077
+   8. z_zcr_mean                           coef=-2.9080
+   9. mfcc_mean_4                          coef=-2.8238
+  10. z_spec_entropy_mean                  coef=-2.8059
+  11. z_mfcc_std_3                         coef=-2.7191
+  12. mfcc_mean_12                         coef=+2.5833
+  13. rolloff_std                          coef=-2.4506
+  14. centroid_mean                        coef=+2.2490
+  15. mfcc_mean_11                         coef=-2.1658
+  16. z_mfcc_mean_2                        coef=-2.1227
+  17. mfcc_mean_6                          coef=+2.0910
+  18. z_mfcc_mean_7                        coef=+2.0847
+  19. z_rolloff_std                        coef=+2.0335
+  20. z_mfcc_mean_6                        coef=-1.9643
