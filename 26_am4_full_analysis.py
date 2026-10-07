@@ -102,11 +102,12 @@ if __name__ == '__main__':
         hour_baseline   = am4[(~am4['is_sim']) & (am4['hour'] == hour)]
         n_available     = len(hour_baseline)
 
-        # KEY DIFFERENCE FROM SCRIPT 22: use ALL available baseline clips
-        # at simulation hours — no 5x cap
-        baseline_parts.append(hour_baseline[['clip_name', 'hour']])
+        # Cap at 2:1 ratio based on AM2 balance experiment finding
+        n_sample = min(2 * hour_sim_count, len(hour_baseline))
+        sampled = hour_baseline.sample(n=n_sample, random_state=42)
+        baseline_parts.append(sampled[['clip_name', 'hour']])
         print(f"  Hour {hour}: {hour_sim_count} sim clips, "
-              f"{n_available} baseline clips (ALL used)")
+      	      f"{n_available} baseline available, {n_sample} sampled")
 
     baseline_df = pd.concat(baseline_parts)
     print(f"\nTotal baseline clips: {len(baseline_df)}")
