@@ -1,0 +1,35 @@
+MATCHED COMPARISON: each visit vs its OWN normal days (same recorder, clock time, length)
+==============================================================================
+Visits with at least one matched normal day: 16   (quiet hour 4, busy 12)
+diff = (visit: hour after minus before) - (same for its normal days), dB.  Positive = louder after visits.
+
+bird_db
+  all visits         median diff  +2.06 dB   louder in 11/16   p=0.044
+  quiet-hour visits  median diff  +5.65 dB   louder in 3/4   p=nan  (too few for a p-value)
+  busy-hour visits   median diff  +0.56 dB   louder in 8/12   p=0.266
+
+total_db
+  all visits         median diff  +1.81 dB   louder in 10/16   p=0.159
+  quiet-hour visits  median diff  +4.19 dB   louder in 3/4   p=nan  (too few for a p-value)
+  busy-hour visits   median diff  +0.82 dB   louder in 7/12   p=0.424
+
+low_db
+  all visits         median diff  +0.34 dB   louder in 11/16   p=0.252
+  quiet-hour visits  median diff  +3.76 dB   louder in 3/4   p=nan  (too few for a p-value)
+  busy-hour visits   median diff  +0.32 dB   louder in 8/12   p=0.677
+
+high_db
+  all visits         median diff  +0.93 dB   louder in 9/16   p=0.562
+  quiet-hour visits  median diff  +2.72 dB   louder in 3/4   p=nan  (too few for a p-value)
+  busy-hour visits   median diff  +0.83 dB   louder in 6/12   p=0.910
+
+Quiet-hour visits, one by one (bird_db and low_db diffs, dB):
+  Audio_Moth_1  Tue 18 Mar  17:14-17:19   bird  +7.27   low +7.95   (vs 2 normal days)
+  Audio_Moth_6  Wed 19 Mar  08:57-09:17   bird  -0.09   low -0.14   (vs 2 normal days)
+  Audio_Moth_1  Wed 19 Mar  17:14-17:34   bird  +5.09   low +7.16   (vs 2 normal days)
+  Audio_Moth_6  Fri 21 Mar  08:41-09:01   bird  +6.20   low +0.36   (vs 2 normal days)
+  quiet-hour visits that are the last visit of the day (any recorder): 3/4
+
+Listening clips: 32 copied to /content/drive/MyDrive/toucanet_soundscape/listen_quiet
+  File names: visitN_<recorder>_<when>_<clip>.wav   - play '0before' first, then the 'after' clips.
+  Listen for: more birdsong or alarm calls (animal reaction) vs voices, footsteps, engines (people) vs rain/wind.

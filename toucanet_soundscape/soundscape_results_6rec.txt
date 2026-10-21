@@ -1,0 +1,32 @@
+SOUNDSCAPE CHECK (full audio, bioacoustics labels)
+================================================================
+Recorders: Audio_Moth_1, Audio_Moth_2, Audio_Moth_3, Audio_Moth_4, Audio_Moth_5, Audio_Moth_6   visits: 27   placebo windows: 29
+
+AFTER - BEFORE   (visits vs placebo)   <- read this first
+  total_db  visits median +2.744 (higher in 23/27)   placebo median -0.362 (n=29)   p=0.025   corrected p=0.173
+  low_db    visits median +0.050 (higher in 15/27)   placebo median -0.066 (n=29)   p=0.053   corrected p=0.265
+  bird_db   visits median +2.175 (higher in 20/27)   placebo median -0.948 (n=29)   p=0.028   corrected p=0.173
+  high_db   visits median +4.090 (higher in 26/27)   placebo median +1.533 (n=29)   p=0.094   corrected p=0.378
+  ndsi      visits median +0.001 (higher in 16/27)   placebo median -0.008 (n=29)   p=0.403   corrected p=0.806
+  aci       visits median +0.044 (higher in 14/27)   placebo median -0.051 (n=29)   p=0.544   corrected p=0.806
+  entropy   visits median -0.005 (higher in 12/27)   placebo median +0.058 (n=29)   p=0.158   corrected p=0.475
+
+DURING - BEFORE   (visits vs placebo)
+  total_db  visits median +0.889 (higher in 20/27)   placebo median -0.090 (n=29)   p=0.184   corrected p=1.000
+  low_db    visits median +0.209 (higher in 21/27)   placebo median -0.062 (n=29)   p=0.006   corrected p=0.039
+  bird_db   visits median +0.647 (higher in 17/27)   placebo median -0.853 (n=29)   p=0.168   corrected p=1.000
+  high_db   visits median +1.991 (higher in 24/27)   placebo median +0.953 (n=29)   p=0.471   corrected p=1.000
+  ndsi      visits median +0.000 (higher in 14/27)   placebo median -0.006 (n=29)   p=0.431   corrected p=1.000
+  aci       visits median +0.129 (higher in 18/27)   placebo median -0.036 (n=29)   p=0.225   corrected p=1.000
+  entropy   visits median -0.008 (higher in 11/27)   placebo median -0.001 (n=29)   p=0.287   corrected p=1.000
+
+Per recorder, bird_db AFTER - BEFORE (median; visits vs placebo):
+  Audio_Moth_1: visits +1.83 dB (higher in 2/3)   placebo +0.26 dB (n=6)
+  Audio_Moth_2: visits +6.68 dB (higher in 2/3)   placebo +2.62 dB (n=6)
+  Audio_Moth_3: visits +7.19 dB (higher in 1/1)   placebo +8.58 dB (n=1)
+  Audio_Moth_4: visits +1.23 dB (higher in 4/6)   placebo -2.82 dB (n=8)
+  Audio_Moth_5: visits +0.88 dB (higher in 6/7)   placebo -5.01 dB (n=4)
+  Audio_Moth_6: visits +3.74 dB (higher in 5/7)   placebo -3.40 dB (n=4)
+
+dB measures: positive = louder than before. 'corrected p' accounts for testing 7 measures.
+Listening clips (loudest bird-band clips before/after the 3 biggest rises) saved in /content/drive/MyDrive/toucanet_soundscape/listen

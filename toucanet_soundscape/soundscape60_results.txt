@@ -1,0 +1,47 @@
+SOUNDSCAPE, 60 MINUTES AFTER EACH VISIT (full audio, bioacoustics labels)
+========================================================================
+Visits: 25   placebo windows: 28   (change = after minus the BEFORE window, in dB)
+
+WHOLE HOUR AFTER vs BEFORE   (visits vs placebo)
+  total_db  visits median +4.465 (higher in 19/25)   placebo median +0.576 (n=28)   p=0.092   corrected p=0.553
+  low_db    visits median +0.063 (higher in 16/25)   placebo median -0.122 (n=28)   p=0.007   corrected p=0.049
+  bird_db   visits median +4.031 (higher in 18/25)   placebo median -2.646 (n=28)   p=0.151   corrected p=0.757
+  high_db   visits median +3.754 (higher in 21/25)   placebo median +1.417 (n=28)   p=0.162   corrected p=0.757
+  ndsi      visits median +0.002 (higher in 14/25)   placebo median -0.014 (n=28)   p=0.258   corrected p=0.774
+  aci       visits median -0.164 (higher in 9/25)   placebo median -0.291 (n=28)   p=0.306   corrected p=0.774
+  entropy   visits median -0.007 (higher in 11/25)   placebo median +0.062 (n=28)   p=0.599   corrected p=0.774
+
+TIME COURSE  bird_db:  visits   placebo   (n visits / n placebo)   p
+  after  0-10 min    +2.52    -0.42     (25 / 28)   p=0.051  +++
+  after 10-20 min    +3.69    -2.66     (25 / 28)   p=0.029  ++++++
+  after 20-30 min    +4.09    -3.12     (25 / 28)   p=0.036  +++++++
+  after 30-40 min    +3.48    -2.00     (25 / 28)   p=0.123  +++++
+  after 40-50 min    +5.36    -2.87     (25 / 28)   p=0.222  ++++++++
+  after 50-60 min    +6.26    -2.30     (25 / 28)   p=0.340  +++++++++
+
+TIME COURSE  total_db:  visits   placebo   (n visits / n placebo)   p
+  after  0-10 min    +2.49    +0.34     (25 / 28)   p=0.027  ++
+  after 10-20 min    +3.61    -0.66     (25 / 28)   p=0.017  ++++
+  after 20-30 min    +4.19    +0.05     (25 / 28)   p=0.032  ++++
+  after 30-40 min    +4.30    -0.63     (25 / 28)   p=0.082  +++++
+  after 40-50 min    +5.07    +0.40     (25 / 28)   p=0.119  +++++
+  after 50-60 min    +6.84    +3.66     (25 / 28)   p=0.243  +++
+
+TIME COURSE  low_db:  visits   placebo   (n visits / n placebo)   p
+  after  0-10 min    +0.06    -0.12     (25 / 28)   p=0.021  
+  after 10-20 min    +0.14    -0.19     (25 / 28)   p=0.009  
+  after 20-30 min    +0.11    -0.04     (25 / 28)   p=0.096  
+  after 30-40 min    +0.07    -0.17     (25 / 28)   p=0.016  
+  after 40-50 min    +0.04    -0.22     (25 / 28)   p=0.011  
+  after 50-60 min    -0.01    -0.21     (25 / 28)   p=0.017  
+
+Per recorder, bird_db whole hour after minus before (median):
+  Audio_Moth_1: visits +12.28 dB (n=3)   placebo +4.64 dB (n=6)
+  Audio_Moth_2: visits +17.35 dB (n=3)   placebo +9.34 dB (n=6)
+  Audio_Moth_3: visits +13.55 dB (n=1)   placebo +14.62 dB (n=1)
+  Audio_Moth_4: visits +3.13 dB (n=5)   placebo -3.00 dB (n=7)
+  Audio_Moth_5: visits +2.83 dB (n=6)   placebo -8.90 dB (n=4)
+  Audio_Moth_6: visits +4.93 dB (n=7)   placebo -3.66 dB (n=4)
+
+Each + is about 1 dB more after visits than on normal days at the same times.
+A real reaction should rise, peak, then shrink back toward zero within the hour.

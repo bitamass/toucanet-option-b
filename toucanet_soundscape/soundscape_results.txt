@@ -1,0 +1,23 @@
+SOUNDSCAPE CHECK (full audio, bioacoustics labels)
+================================================================
+Recorders: Audio_Moth_6   visits: 7   placebo windows: 4
+
+AFTER - BEFORE   (visits vs placebo)   <- read this first
+  total_db  visits median +3.360 (lower in 1/7)   placebo median +0.355 (n=4)   p=0.109
+  low_db    visits median -0.020 (lower in 4/7)   placebo median -0.044 (n=4)   p=0.648
+  bird_db   visits median +3.744 (lower in 2/7)   placebo median -3.403 (n=4)   p=0.024
+  high_db   visits median +4.090 (lower in 1/7)   placebo median +0.341 (n=4)   p=0.164
+  ndsi      visits median +0.012 (lower in 3/7)   placebo median -0.201 (n=4)   p=0.648
+  aci       visits median +0.467 (lower in 1/7)   placebo median -0.006 (n=4)   p=0.164
+  entropy   visits median -0.034 (lower in 4/7)   placebo median +0.053 (n=4)   p=0.527
+
+DURING - BEFORE   (visits vs placebo)
+  total_db  visits median +2.322 (lower in 2/7)   placebo median -0.607 (n=4)   p=0.230
+  low_db    visits median +0.151 (lower in 2/7)   placebo median -0.033 (n=4)   p=0.109
+  bird_db   visits median +2.561 (lower in 2/7)   placebo median -1.819 (n=4)   p=0.109
+  high_db   visits median +2.091 (lower in 1/7)   placebo median +0.800 (n=4)   p=0.230
+  ndsi      visits median +0.020 (lower in 2/7)   placebo median -0.096 (n=4)   p=0.527
+  aci       visits median +0.428 (lower in 2/7)   placebo median +0.098 (n=4)   p=0.315
+  entropy   visits median -0.007 (lower in 5/7)   placebo median -0.017 (n=4)   p=0.788
+
+dB measures: negative = quieter than before. ndsi: negative = more engine/voice-band sound.

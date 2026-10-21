@@ -1,0 +1,33 @@
+BUSY vs QUIET HOUR AFTER EACH VISIT
+========================================================================
+Visits: 25  (quiet hour 6, busy hour 19)   placebo windows: 28  (quiet hour 21, busy hour 7)
+busy = a simulation happened at another recorder during the hour after
+
+bird_db  (whole hour after minus before, dB; median)
+  1. QUIET-hour visits  vs  quiet-hour placebo  +7.13 (n= 6)  vs   -3.38 (n=21)   p=0.012
+  2. BUSY-hour visits   vs  quiet-hour placebo  +3.50 (n=19)  vs   -3.38 (n=21)   p=0.015
+  4. walking-only visits vs loud-sim visits     +4.90 (n= 3)  vs   +3.65 (n=22)   p=0.446
+  3. visits: change vs minutes of activity elsewhere   rho=-0.36   p=0.076
+
+total_db  (whole hour after minus before, dB; median)
+  1. QUIET-hour visits  vs  quiet-hour placebo  +7.28 (n= 6)  vs   -1.28 (n=21)   p=0.007
+  2. BUSY-hour visits   vs  quiet-hour placebo  +4.29 (n=19)  vs   -1.28 (n=21)   p=0.004
+  4. walking-only visits vs loud-sim visits     +4.46 (n= 3)  vs   +4.45 (n=22)   p=0.550
+  3. visits: change vs minutes of activity elsewhere   rho=-0.41   p=0.043
+
+low_db  (whole hour after minus before, dB; median)
+  1. QUIET-hour visits  vs  quiet-hour placebo  +0.59 (n= 6)  vs   -0.37 (n=21)   p=0.002
+  2. BUSY-hour visits   vs  quiet-hour placebo  +0.03 (n=19)  vs   -0.37 (n=21)   p=0.002
+  4. walking-only visits vs loud-sim visits     +0.09 (n= 3)  vs   +0.05 (n=22)   p=0.497
+  3. visits: change vs minutes of activity elsewhere   rho=-0.62   p=0.001
+
+high_db  (whole hour after minus before, dB; median)
+  1. QUIET-hour visits  vs  quiet-hour placebo  +2.07 (n= 6)  vs   -1.13 (n=21)   p=0.065
+  2. BUSY-hour visits   vs  quiet-hour placebo  +3.97 (n=19)  vs   -1.13 (n=21)   p=0.001
+  4. walking-only visits vs loud-sim visits     +6.84 (n= 3)  vs   +2.94 (n=22)   p=0.311
+  3. visits: change vs minutes of activity elsewhere   rho=-0.04   p=0.841
+
+How to read it:
+  - Test 1 shows a clear difference -> the forest reacts even when the team is gone (animal reaction).
+  - Only test 2 shows it, and test 3 has a positive rho -> it tracks the team's ongoing activity.
+  - Groups are small; treat this as a direction, not a final answer.
