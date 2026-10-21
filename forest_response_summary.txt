@@ -1,0 +1,32 @@
+FOREST RESPONSE TO SIMULATIONS
+==================================================================
+Sessions analysed: 25 (of 26), recorders: AM1, AM2, AM3, AM4, AM5, AM6
+Metric 'rate' = bird-detected clips per minute (max 20).
+
+Bird activity (clips/min)
+  during vs before (same day)        n=25  median change +0.23 (+15%)  lower in 11/25  p=0.916
+  after vs before (same day)         n=25  median change +0.03 (+2%)  lower in 12/25  p=0.442
+  during vs same time, other days    n=17  median change +0.23 (+11%)  lower in 5/17  p=0.326
+  before vs same time, other days*   n=17  median change +0.10 (+5%)  lower in 5/17  p=0.109
+
+Species heard
+  during vs before (same day)        n=25  median change -1.00 (-14%)  lower in 13/25  p=0.119
+  after vs before (same day)         n=25  median change -2.00 (-29%)  lower in 15/25  p=0.245
+  during vs same time, other days    n=17  median change +0.00 (+0%)  lower in 6/17  p=0.833
+  before vs same time, other days*   n=17  median change +0.50 (+7%)  lower in 4/17  p=0.185
+
+Diversity (Shannon)
+  during vs before (same day)        n=25  median change -0.01 (-1%)  lower in 13/25  p=0.458
+  after vs before (same day)         n=25  median change -0.04 (-4%)  lower in 14/25  p=0.530
+  during vs same time, other days    n=17  median change +0.00 (+0%)  lower in 8/17  p=0.609
+  before vs same time, other days*   n=17  median change +0.00 (+0%)  lower in 6/17  p=0.551
+
+* sanity check: 'before' should look like other days if days are comparable.
+
+Per recorder (median during/before ratio of bird activity):
+  AM1: 3 sessions, during/before = 2.55
+  AM2: 3 sessions, during/before = 0.81
+  AM3: 1 sessions, during/before = 0.20
+  AM4: 5 sessions, during/before = 1.59
+  AM5: 6 sessions, during/before = 1.31
+  AM6: 7 sessions, during/before = 1.16

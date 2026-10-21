@@ -1,0 +1,33 @@
+ALL-CLIPS MODEL: bird activity when people are present
+==================================================================
+Sessions: 31   minutes used: 31,562
+
+PRIMARY: daytime minutes 06:00-18:00   (15,722 minutes, 572 'during' minutes)
+  bird_frac  (average level 0.132)
+    during       -0.0156 (-12% of average)  95% CI -0.0428 to +0.0116   placebo p=0.558
+    after_0_20   +0.0220 (+17% of average)  95% CI -0.0109 to +0.0549   placebo p=0.193
+    after_20_40  -0.0122 (-9% of average)  95% CI -0.0458 to +0.0214   placebo p=0.478
+    after_40_60  +0.0135 (+10% of average)  95% CI -0.0227 to +0.0497   placebo p=0.542
+    smallest 'during' change detectable with 80% power: about 0.0738 (56% of average)
+  mean_conf  (average level 0.075)
+    during       -0.0097 (-13% of average)  95% CI -0.0280 to +0.0086   placebo p=0.638
+    after_0_20   +0.0108 (+14% of average)  95% CI -0.0090 to +0.0307   placebo p=0.392
+    after_20_40  -0.0097 (-13% of average)  95% CI -0.0285 to +0.0090   placebo p=0.498
+    after_40_60  +0.0120 (+16% of average)  95% CI -0.0146 to +0.0387   placebo p=0.379
+    smallest 'during' change detectable with 80% power: about 0.0540 (72% of average)
+
+All hours   (31,562 minutes, 572 'during' minutes)
+  bird_frac  (average level 0.172)
+    during       -0.0169 (-10% of average)  95% CI -0.0419 to +0.0082   placebo p=0.522
+    after_0_20   +0.0219 (+13% of average)  95% CI -0.0095 to +0.0533   placebo p=0.183
+    after_20_40  -0.0029 (-2% of average)  95% CI -0.0364 to +0.0307   placebo p=0.907
+    after_40_60  +0.0221 (+13% of average)  95% CI -0.0085 to +0.0527   placebo p=0.638
+    smallest 'during' change detectable with 80% power: about 0.0730 (42% of average)
+  mean_conf  (average level 0.084)
+    during       -0.0106 (-13% of average)  95% CI -0.0281 to +0.0070   placebo p=0.601
+    after_0_20   +0.0112 (+13% of average)  95% CI -0.0068 to +0.0291   placebo p=0.292
+    after_20_40  +0.0006 (+1% of average)  95% CI -0.0227 to +0.0239   placebo p=0.970
+    after_40_60  +0.0172 (+20% of average)  95% CI -0.0058 to +0.0401   placebo p=0.375
+    smallest 'during' change detectable with 80% power: about 0.0527 (63% of average)
+
+Negative = less bird activity than usual for that recorder, day and hour.

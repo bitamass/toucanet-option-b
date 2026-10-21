@@ -1,0 +1,18 @@
+SPECIES TEST AND DETECTABLE EFFECT (daytime, bioacoustics labels)
+==================================================================
+Daytime sessions: 24   placebo windows: 35
+
+A. Target species: change in share of clips with the species (during - before)
+  Great Tinamou                expected quieter  sessions +0.0000  placebo +0.0000  mean diff -0.0018  p=0.031
+  Streak-chested Antpitta      expected quieter  sessions +0.0000  placebo +0.0000  mean diff -0.0096  p=0.075
+  Chestnut-backed Antbird      expected quieter  sessions +0.0000  placebo +0.0000  mean diff +0.0139  p=0.609
+  Black-cheeked Ant-Tanager    expected louder   sessions +0.0000  placebo +0.0000  mean diff -0.0048  p=0.615
+  Black-hooded Antshrike       too few detections to test
+  Rufous Piha                  expected louder   sessions +0.0000  placebo +0.0000  mean diff -0.0046  p=0.200
+  Scarlet Macaw                expected louder   sessions +0.0000  placebo +0.0000  mean diff -0.0012  p=0.670
+  Holm-corrected: Tinamou 0.19, Antpitta 0.38, Piha 0.80, Antbird 1.00, Ant-Tanager 1.00, Macaw 1.00
+
+B. Smallest detectable change in share of clips with birds
+  spread of placebo changes (SD): 0.106
+  with 24 sessions and 35 placebo windows, 80% power to detect a change of about 0.079 (7.9 percentage points)
+  for scale: birds are heard in 17.2% of all clips, so that is about 46% of the typical level

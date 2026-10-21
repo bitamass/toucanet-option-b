@@ -1,0 +1,23 @@
+FOREST RESPONSE, FULL DATA (bioacoustics labels)
+================================================================
+Sessions with complete recordings: 27 (daytime 21)   placebo windows: 29 (daytime 23)
+
+ALL SESSIONS
+  Share of clips with birds  during-before: sessions median -0.007 (lower in 18/27)  placebo median -0.005 (n=29)  p=0.640
+  Share of clips with birds   after-before: sessions median -0.005 (lower in 14/27)  placebo median -0.018 (n=29)  p=0.466
+  Species heard              during-before: sessions median +0.0 (lower in 12/27)  placebo median +0.0 (n=29)  p=0.921
+  Species heard               after-before: sessions median +0.0 (lower in 12/27)  placebo median +0.0 (n=29)  p=0.742
+
+DAYTIME SESSIONS
+  Share of clips with birds  during-before: sessions median -0.007 (lower in 14/21)  placebo median -0.005 (n=23)  p=0.533
+  Share of clips with birds   after-before: sessions median +0.018 (lower in 10/21)  placebo median -0.020 (n=23)  p=0.188
+  Species heard              during-before: sessions median +0.0 (lower in 10/21)  placebo median +0.0 (n=23)  p=0.652
+  Species heard               after-before: sessions median +0.0 (lower in 10/21)  placebo median +0.0 (n=23)  p=0.531
+
+Per recorder, median change in share of clips with birds (during - before):
+  Audio_Moth_1: 3 sessions, +0.000
+  Audio_Moth_2: 3 sessions, +0.083
+  Audio_Moth_3: 1 sessions, +0.000
+  Audio_Moth_4: 6 sessions, -0.022
+  Audio_Moth_5: 7 sessions, -0.002
+  Audio_Moth_6: 7 sessions, -0.035
