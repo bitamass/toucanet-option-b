@@ -46,6 +46,8 @@ The analysis pipeline has included:
 
 - Alternative representation and domain-generalization experiments
 
+- Soundscape (environmental-response) tests on the full audio, with placebo-day comparisons
+
 
 
 A major focus of the later experiments is distinguishing true disturbance-related acoustic information from recorder/site-specific environmental information.
@@ -58,9 +60,10 @@ A major focus of the later experiments is distinguishing true disturbance-relate
 - **Early results:** within a single recorder and session, classifiers on Perch embeddings and hand-built acoustic features appeared to separate disturbance from baseline clips.
 - **What the validation showed:** much of that performance was explained by site, recording session and time of day. Scripts 31-32 re-do the validation with leakage corrected, and 36-39 test the session and date confounds directly. Treat results from before script 31 with caution.
 - **Where it is hard:** transfer to a recorder the model has not seen (leave-one-site-out, scripts 43, 53, 62-63). Site information is encoded in the representation itself, which is why later work moves to adaptive normalisation, sequence models and domain-adversarial methods.
+- **Fall 2026 (scripts 70-81):** tests whether the soundscape itself reacts to people. BirdNET detections show no measurable silence; the full audio is slightly louder for about an hour after visits, but part of that looks like unlabelled human noise, so an animal response is not yet established. Start with 74, 77, 79 and 81.
 - **Reading order for a quick review:** 31 (corrected CV), 36 and 39 (confound tests), 42-43 (sequence voting), 61 (autoregressive prediction-error model), 63 (leave-one-site-out).
 
-Headline numbers are not summarised in this file; see the output of each script.
+Headline numbers for scripts 01-67 are not summarised in this file; see the output of each script. The section on scripts 70-81 below includes their key numbers.
 
 ## Script Guide
 
@@ -241,6 +244,36 @@ Includes:
 - Velocity plus adaptive z-score features
 
 - Unsupervised fusion
+
+
+
+### 70-81 — Forest response: does the soundscape react to people? (Fall 2026)
+
+Goal: detect human presence from the **environment's response** (birds, insects, overall soundscape), not from hearing the people themselves.
+
+All tests compare each simulation visit with **placebo windows**: the same recorder at the same clock time on days with no visit within 2 hours. This controls for the normal daily rise and fall of activity. From script 74 on, all work uses `bioacoustics_dataset.csv` (every 3-second clip, about 631k, including clips with no bird detected); scripts 70-72 are early versions on `cleaned_df` and are superseded.
+
+**BirdNET-based tests (spreadsheet only, run locally)**
+
+- `70_forest_response.py`: first before/during/after comparison of bird activity around visits, vs other days. Superseded by 74.
+- `71_daytime_species_check.py`: daytime-only species richness check with placebo windows and recorder-running checks. Superseded by 74-75.
+- `72_am6_audio_check.py`: early audio-index check at recorder 6 (bird-band loudness, ACI, entropy). Superseded by 77.
+- `73_compare_label_files.py`: compares the simulation labels in the two metadata files and the visit sessions each implies. The fall analyses use `bioacoustics_dataset.csv`.
+- `74_forest_response_full.py`: share of clips with a bird and species heard, before vs during vs after each visit, against placebo windows, all six recorders. **Result: no change** (27 visits with complete recordings, 29 placebo windows; e.g. bird share during−before −0.007 vs −0.005 on placebo days, p = 0.64).
+- `75_species_and_power.py`: pre-specified species (shy ground birds expected quieter, alarm callers expected louder) with Holm correction, plus the smallest detectable effect. **Result: nothing survives correction; with this many visits only a drop of about half the normal bird activity (≈8 percentage points) could be detected.**
+- `76_all_clips_model.py`: one fixed-effects model over every minute of recording (recorder × day and recorder × hour), with placebo-shifted sessions for inference; tests during and 0-60 min after. **Result: no significant change** (during −12% of average, placebo p = 0.56).
+
+**Soundscape tests on the full audio (run in Google Colab; read clips from the shared Drive)**
+
+- `77_soundscape_colab.py`: measures the sound itself in every 3-s clip around each visit and placebo window: overall, low (50-1500 Hz), bird (2-8 kHz) and high (8-16 kHz) band loudness, NDSI, ACI and spectral entropy; Holm correction over the 7 measures. **Result (27 visits, 29 placebo, all six recorders): after a visit the soundscape is louder** (overall +2.7 dB vs −0.4 on placebo days, louder after 23 of 27 visits; bird band +2.2 vs −0.9 dB; higher at 5 of 6 recorders), **but not significant after correction** (corrected p = 0.17). During visits the low band rises (corrected p = 0.04), as expected from the people themselves.
+- `78_soundscape_timecourse.py`: 5-minute time course from 20 min before to 20 min after (reuses 77's measurements). No difference before visits; the difference builds from the end of the visit onwards.
+- `79_soundscape_60min.py`: extends the after-window to 60 min (visits followed by another visit within the hour are dropped). **Result: the difference does not fade; it keeps growing over the hour** (bird band +2.5 dB vs −0.4 at 0-10 min, +6.3 vs −2.3 at 50-60 min), and the low band stays slightly raised for the whole hour (corrected p = 0.049).
+- `80_busy_vs_quiet_hour.py`: splits visits by whether a simulation ran at any other recorder during the hour after. **Result: the rise is larger when nothing ran elsewhere**, and smaller the more activity there was elsewhere, so it is not the team's simulations at other recorders.
+- `81_matched_and_listen.py`: fairest test: each visit vs only its own placebo windows (same recorder, clock time and length); also copies listening clips. **Result: about +2 dB in the bird band after visits, 11 of 16 visits (Wilcoxon p = 0.044).** Of the four "quiet-hour" visits, two show a broad rise across all bands including the low band (consistent with people, vehicles or wind) and one shows a bird-band-only rise.
+
+**Current reading:** BirdNET detections show no measurable silence when people pass. The full-audio soundscape is slightly louder for about an hour after a simulation session, consistently across recorders, but part of this looks like unlabelled human or broadband noise; a genuine animal response is possible but not established. Next step: listen to the quiet-hour clips to separate birds from people, vehicles and wind.
+
+Outputs from 77-81 are in `toucanet_soundscape/` (listening clips are not committed).
 
 
 
