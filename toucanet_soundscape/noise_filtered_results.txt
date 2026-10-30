@@ -1,0 +1,16 @@
+NOISE-FILTERED SOUNDSCAPE TEST
+========================================================================
+Noisy clip = low band more than 3 dB above that window's own before-period median.
+
+A. Share of clips in the hour after that are noisy
+  visits 1.8% (n=25)   placebo 2.4% (n=28)   p=0.593
+
+RAW (all clips)
+  bird_db   B. matched: +2.06 dB, louder in 11/16, p=0.044   |  C. all: visits +4.03 vs placebo -2.65 dB, p=0.151
+  total_db  B. matched: +1.81 dB, louder in 10/16, p=0.159   |  C. all: visits +4.46 vs placebo +0.58 dB, p=0.092
+  high_db   B. matched: +0.93 dB, louder in 9/16, p=0.562   |  C. all: visits +3.75 vs placebo +1.42 dB, p=0.162
+
+FILTERED (noisy clips removed)
+  bird_db   B. matched: +2.92 dB, louder in 11/15, p=0.041   |  C. all: visits +3.67 vs placebo -3.13 dB, p=0.169
+  total_db  B. matched: +2.03 dB, louder in 11/15, p=0.035   |  C. all: visits +3.80 vs placebo +0.14 dB, p=0.104
+  high_db   B. matched: +1.76 dB, louder in 9/15, p=0.252   |  C. all: visits +3.47 vs placebo +1.07 dB, p=0.128

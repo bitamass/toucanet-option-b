@@ -1,0 +1,39 @@
+WHICH ANIMALS CHANGE AFTER VISITS?  (BirdNET species, hour after vs before, each visit vs its own normal days)
+====================================================================================================
+Visits with matched normal days: 16.  diff = change in share of clips with the species, visit minus normal days.
+
+Any bird           median diff +0.019   up in 10/16 visits   p=0.454
+Species per clip   median diff +0.015   up in 10/16 visits   p=0.454
+
+Species that rise most consistently (heard at >= 8 visits; q = false-discovery-rate corrected):
+  species                          up/visits  median diff       p      q  recorders up
+  Riverside Wren                         7/8       +0.002   0.070   0.72  3/4
+  White-whiskered Puffbird              2/10       -0.001   0.109   0.72  1/6
+  Black-capped Pygmy-Tyrant             4/14       -0.005   0.180   0.72  2/6
+  Buff-rumped Warbler                   4/14       -0.002   0.180   0.72  0/5
+  Blue-crowned Manakin                   6/8       +0.009   0.289   0.77  3/3
+  Rufous Piha                            2/8       -0.001   0.289   0.77  1/5
+  Great Tinamou                          6/9       +0.002   0.508   0.98  3/4
+  Chestnut-backed Antbird                3/9       -0.001   0.508   0.98  3/6
+  Orange-billed Sparrow                 7/11       +0.001   0.549   0.98  3/5
+  Black-faced Antthrush                  3/8       -0.001   0.727   1.00  1/4
+  Scarlet Macaw                         5/12       -0.001   0.774   1.00  1/5
+  Red-capped Manakin                    6/14       -0.000   0.791   1.00  2/5
+  Black-cheeked Ant-Tanager             7/14       +0.000   1.000   1.00  3/5
+  Scaly-breasted Wren                   5/10       -0.000   1.000   1.00  2/5
+  Short-billed Pigeon                   6/11       +0.000   1.000   1.00  3/5
+
+Species that tend to DROP after visits:
+  Black-capped Pygmy-Tyrant         10/14 down       -0.005  p=0.180
+  Buff-rumped Warbler               10/14 down       -0.002  p=0.180
+  White-whiskered Puffbird           8/10 down       -0.001  p=0.109
+  Red-capped Manakin                 8/14 down       -0.000  p=0.791
+  Scarlet Macaw                      7/12 down       -0.001  p=0.774
+
+B. Walking-only minutes DURING visits (any-bird share vs before, minus the same on normal days)
+  visits with walking-only stretches: 8   median diff -0.024   higher in 4/8   p=1.000
+
+How to read it:
+  - A species with a high 'up/visits', small q and several recorders up is a candidate responder.
+  - Alarm-calling species rising suggests a disturbance reaction; many species rising suggests a rebound.
+  - B tells whether birds change while people are only walking (the quiet-poacher case).
