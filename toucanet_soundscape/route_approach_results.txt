@@ -1,0 +1,18 @@
+DOES THE FOREST CHANGE WHILE PEOPLE ARE APPROACHING?
+========================================================================
+Recorder B while the team is at the previous recorder (before reaching B), vs the same minutes on B's normal days.
+dB measures in dB; any_bird = share of clips with a BirdNET bird. Positive = higher than normal days.
+
+APPROACH (team at the previous recorder, on its way):  14 visits, median 20 min each
+  bird_db   median -2.242 dB   higher in 4/14   p=0.180
+  total_db  median -1.940 dB   higher in 5/14   p=0.424
+  high_db   median -0.709 dB   higher in 5/14   p=0.424
+  low_db    median -0.650 dB   higher in 2/14   p=0.013
+  any_bird  median +0.000   higher in 0/1   p=nan
+
+EARLIER (before the approach, team further away):  1 visits, median 4 min each
+  bird_db   median -4.196 dB   higher in 0/1   p=nan
+  total_db  median -4.116 dB   higher in 0/1   p=nan
+  high_db   median -1.365 dB   higher in 0/1   p=nan
+  low_db    median -1.012 dB   higher in 0/1   p=nan
+  any_bird  median -0.500   higher in 0/1   p=nan
