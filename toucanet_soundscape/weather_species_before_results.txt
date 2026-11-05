@@ -1,0 +1,33 @@
+WEATHER AND WHO GOES QUIET BEFORE ARRIVAL
+========================================================================
+Matched visits: 16
+
+A. WEATHER  (hourly weather shifted by -2 h so the daily temperature peak is in the early afternoon)
+  daily temperature cycle, local hour: 0h 25.5  3h 25.3  6h 24.8  9h 26.9  12h 29.4  15h 29.7  18h 27.7  21h 25.8
+
+  Visit day minus its own normal days (same recorder, same clock time):
+  before Temperature           median -0.050 C   higher in 7/16   p=0.804
+  before Humidity              median +0.000 %   higher in 7/14   p=1.000
+  before Windspeed             median +1.300 km/h   higher in 11/16   p=0.210
+  before Precipitation         median +0.000 mm   higher in 3/7   p=1.000
+  after  Temperature           median +0.450 C   higher in 12/16   p=0.077
+  after  Humidity              median -4.250 %   higher in 4/16   p=0.077
+  after  Windspeed             median +2.212 km/h   higher in 13/16   p=0.021
+  after  Precipitation         median +0.000 mm   higher in 1/8   p=0.070
+
+  Does the after-visit rise follow the weather difference? (Spearman, across visits)
+    high_db  vs after_Temperature  rho=+0.49  p=0.065  (n=15)
+    high_db  vs after_Humidity     rho=-0.53  p=0.041  (n=15)
+    high_db  vs after_Windspeed    rho=-0.05  p=0.869  (n=15)
+    bird_db  vs after_Temperature  rho=+0.35  p=0.196  (n=15)
+    bird_db  vs after_Humidity     rho=-0.36  p=0.187  (n=15)
+    bird_db  vs after_Windspeed    rho=-0.17  p=0.544  (n=15)
+
+B. WHO GOES QUIET IN THE 15 MINUTES BEFORE ARRIVAL?  (vs 30-15 min before, beyond normal days)
+  any bird                     median -0.003   higher in 7/16   p=0.804
+  Species that drop most consistently (heard at >= 6 visits):
+    Great Tinamou                    down in 6/6   median -0.005   p=0.031
+    Short-billed Pigeon              down in 6/7   median -0.012   p=0.125
+    Buff-rumped Warbler              down in 5/8   median -0.003   p=0.727
+    Blue-crowned Manakin             down in 5/9   median -0.002   p=1.000
+    Black-capped Pygmy-Tyrant        down in 7/13   median -0.002   p=1.000
