@@ -1,0 +1,35 @@
+Logged events: 61 (29 human presence, 32 played sound). Visits (events <40 min apart grouped, anchored on the first): 25 start with human presence, 2 with a played sound.
+
+SOUNDSCAPE AROUND THE LOGGED MOMENT  (time 0 = disturbance logged in the field)
+============================================================================================
+Change since the baseline (40-30 min before), beyond normal days; median dB. * = same direction in at least 75% of visits.
+
+HUMAN PRESENCE (first event of the visit): 15 visits with normal days
+  minutes          0-1k     1-2k     2-4k     4-6k     6-8k    8-11k   11-14k   14-16k    tinamou  any bird
+  -40 to -35    +0.14    -0.08    -0.79    -0.01    +0.68    -0.26    -0.19    +0.75    +0.000    -0.010
+  -35 to -30    -0.14    +0.08    +0.79    +0.01    -0.68    +0.26    +0.19    -0.75    +0.000    -0.010
+  -30 to -25    -0.15    +0.48    +0.21    +0.22    -0.12    +2.41    +0.10    -1.22    +0.000    +0.005
+  -25 to -20    -0.03    -0.03    +0.57    +0.17    -1.87    -1.09    -0.97    +0.48    +0.000    +0.020
+  -20 to -15    +0.19    +0.06    -1.65    -0.74    -2.16    -1.96    -0.57    -0.67    +0.000    +0.000
+  -15 to -10    -0.00    -0.65    -1.39    -1.05    -2.59    -0.37    -0.20    -0.96    +0.000    -0.020
+  -10 to  -5    +0.12    +0.03    -0.34    -0.11    -2.71    +0.12    +0.06    -1.29    +0.000    -0.030
+   -5 to  +0    +1.55    +0.93    -1.28    -0.98    -0.67    -0.70    +0.05    -0.18    +0.000    -0.020
+   +0 to  +5    +0.22    -0.58    -2.22    -0.07    -2.39    -0.55    -2.54    +0.75    +0.000    -0.035  <- logged
+   +5 to +10    -0.52    -0.71*   -2.59    -0.81    -2.49    -0.23    -0.95    -0.51    +0.000    -0.025
+  +10 to +15    +0.14    -0.85    -1.21    -0.33    -2.23    -1.38    -0.05    -0.82    +0.000    -0.020
+  +15 to +20    -0.29    -0.28    -0.16    -0.32    -1.13    -1.22    -0.25    +0.13    +0.000    +0.010
+  +20 to +25    +0.35    -0.04    -0.71    -1.06    +0.37    -0.70    -0.59    -1.44    +0.000    +0.020
+  +25 to +30    +0.34    -0.01    -2.71    -0.58    -0.49    -1.87    -1.96    +0.42    +0.000    +0.040
+  +30 to +35    +0.21    +0.03    -0.02    -1.37    -1.71    -1.21    +0.24    +2.46    +0.000    +0.010
+  +35 to +40    +0.49    +0.10    -0.75    -0.48    -0.96    +0.48    -0.51    -2.27    +0.000    +0.000
+
+PLAYED SOUND (vehicle, chainsaw, gunshot...): 2 visits with normal days
+  too few visits to show
+
+How to read it:
+  - HUMAN PRESENCE rows before 0: a change there, with 0-1k and 1-2k flat, is the forest reacting before
+    the person logged their presence (early warning). Note people were likely within earshot
+    in the minutes just before 0, so the earliest steps are the cleanest test.
+  - PLAYED SOUND rows: nothing should change before 0 except from the person carrying the sound;
+    a change right after 0 is the reaction to the sound itself.
+  - tinamou / any bird: share of clips with a BirdNET detection, change since baseline beyond normal days.
