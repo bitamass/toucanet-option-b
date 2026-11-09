@@ -1,0 +1,33 @@
+FOCUSED TEST: does the soundscape change before a logged human presence?
+==============================================================================
+Per visit: change since baseline (40-30 min before), minus the same on its own normal days (dB).
+
+25 to 5 min before (main test)   (15 visits)
+  0-1 kHz    median  -0.16 dB   quieter in 8/15   sign p=1.000   Wilcoxon p=0.489
+  1-2 kHz    median  -0.27 dB   quieter in 9/15   sign p=0.607   Wilcoxon p=0.169
+  2-4 kHz    median  -1.24 dB   quieter in 9/15   sign p=0.607   Wilcoxon p=0.208
+  4-6 kHz    median  +0.03 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.804
+  6-8 kHz    median  -2.19 dB   quieter in 9/15   sign p=0.607   Wilcoxon p=0.073  <- main test
+  8-11 kHz   median  -0.22 dB   quieter in 8/15   sign p=1.000   Wilcoxon p=0.421
+  11-14 kHz  median  -0.42 dB   quieter in 10/15   sign p=0.302   Wilcoxon p=0.135
+  14-16 kHz  median  -1.47 dB   quieter in 11/15   sign p=0.118   Wilcoxon p=0.252
+
+5 min just before logging   (15 visits)
+  0-1 kHz    median  +1.55 dB   quieter in 4/15   sign p=0.118   Wilcoxon p=0.095
+  1-2 kHz    median  +0.93 dB   quieter in 5/15   sign p=0.302   Wilcoxon p=0.454
+  2-4 kHz    median  -1.28 dB   quieter in 10/15   sign p=0.302   Wilcoxon p=0.151
+  4-6 kHz    median  -0.98 dB   quieter in 11/15   sign p=0.118   Wilcoxon p=0.064
+  6-8 kHz    median  -0.67 dB   quieter in 10/15   sign p=0.302   Wilcoxon p=0.121
+  8-11 kHz   median  -0.70 dB   quieter in 8/15   sign p=1.000   Wilcoxon p=0.561
+  11-14 kHz  median  +0.05 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.599
+  14-16 kHz  median  -0.18 dB   quieter in 9/15   sign p=0.607   Wilcoxon p=0.524
+
+0 to 15 min after   (15 visits)
+  0-1 kHz    median  +0.17 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.978
+  1-2 kHz    median  -0.68 dB   quieter in 8/15   sign p=1.000   Wilcoxon p=0.489
+  2-4 kHz    median  -1.07 dB   quieter in 9/15   sign p=0.607   Wilcoxon p=0.303
+  4-6 kHz    median  +0.26 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.639
+  6-8 kHz    median  -2.17 dB   quieter in 10/15   sign p=0.302   Wilcoxon p=0.055
+  8-11 kHz   median  -0.23 dB   quieter in 10/15   sign p=0.302   Wilcoxon p=0.454
+  11-14 kHz  median  +0.42 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.454
+  14-16 kHz  median  +0.23 dB   quieter in 7/15   sign p=1.000   Wilcoxon p=0.978
