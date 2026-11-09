@@ -113,6 +113,7 @@ def any_bird(v):
 df["any_bird"] = df["confidence"].apply(any_bird)
 by_rec = {r: g for r, g in df.groupby("Recorder")}
 MINUTES = list(range(-5, 10))
+BASE_MIN = [-5, -4, -3]   # baseline: minutes -5 to -2, before the sound (logged times can lag the sound by ~1 min)
 plan, need = {}, set()
 for k, e in S_.reset_index(drop=True).iterrows():
     g = by_rec.get(e.rec)
@@ -169,26 +170,26 @@ spec = {r[0]: np.array(r[1:], dtype=float) for r in cache.itertuples(index=False
 names_g = [f"{a}-{b}k" for a, b in GROUPS]
 res = {}          # (stype, minute) -> list of arrays [8 groups dB change, quiet share change, bird change]
 for k, e in S_.iterrows():
-    base_clips = [n for m in range(-5, 0) for n in plan.get((k, m), []) if n in spec]
-    if len(base_clips) < 40:
+    base_clips = [n for m in BASE_MIN for n in plan.get((k, m), []) if n in spec]
+    if len(base_clips) < 30:
         continue
     B = np.array([spec[n] for n in base_clips])
-    base_db = 10 * np.log10(B[:, :8].mean(axis=0) + 1e-15)
+    base_db = np.median(10 * np.log10(B[:, :8] + 1e-15), axis=0)   # median clip: one loud clip cannot dominate
     thr = np.percentile(B[:, 8], 25)
     base_q = (B[:, 8] < thr).mean()
-    base_bird = np.nanmean([plan.get((k, m, "bird"), np.nan) for m in range(-5, 0)])
+    base_bird = np.nanmean([plan.get((k, m, "bird"), np.nan) for m in BASE_MIN])
     for m in MINUTES:
         cl = [n for n in plan.get((k, m), []) if n in spec]
         if len(cl) < 10:
             continue
         X = np.array([spec[n] for n in cl])
-        d = list(10 * np.log10(X[:, :8].mean(axis=0) + 1e-15) - base_db)
+        d = list(np.median(10 * np.log10(X[:, :8] + 1e-15), axis=0) - base_db)
         d.append((X[:, 8] < thr).mean() - base_q)
         d.append(plan.get((k, m, "bird"), np.nan) - base_bird)
         res.setdefault((e.stype, m), []).append(d)
 
 out = ["POSITIVE CONTROL: do animals visibly react to a played sound?", "=" * 96,
-       "Minute by minute around the logged sound (0 = played). Change vs the 5 minutes before.",
+       "Minute by minute around the logged sound (0 = played). Change vs minutes -5 to -2 (median clip).",
        "Columns: pitch groups (median dB), quiet = share of very quiet clips, bird = BirdNET any-bird share.",
        "* = same direction in at least 75% of events.", ""]
 rows = []
