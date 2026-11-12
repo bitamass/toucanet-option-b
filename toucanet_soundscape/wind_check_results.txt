@@ -1,0 +1,38 @@
+WIND CHECK: is the quieting around visits just windier weather?
+15 human-presence visits; visit minus normal days, -30 to +30 min, human-tagged clips removed (dB).
+Wind on visit hours minus normal days: median +1.95 km/h, windier in 12/15
+
+BIRD band 2-7 kHz
+  all visits                              : median -1.57 dB, quieter in 11/15, sign p=0.118, Wilcoxon p=0.007
+  low-wind visits (within 1 km/h, n= 3)    : too few to test
+  calmer half of visits (n=10)            : median -1.35 dB, quieter in 7/10, sign p=0.344, Wilcoxon p=0.084
+  vs the normal day with the closest wind : median +0.37 dB, quieter in 7/15, sign p=1.000, Wilcoxon p=0.303
+  follows the wind difference?            : Spearman rho=+0.02, p=0.949
+  quieting at ZERO wind difference (regr.): -4.30 dB (95% bootstrap -9.73 to -1.79)  [unstable extrapolation]
+
+INSECT band 10-13 kHz
+  all visits                              : median -1.24 dB, quieter in 12/15, sign p=0.035, Wilcoxon p=0.001
+  low-wind visits (within 1 km/h, n= 3)    : too few to test
+  calmer half of visits (n=10)            : median -0.97 dB, quieter in 8/10, sign p=0.109, Wilcoxon p=0.014
+  vs the normal day with the closest wind : median -0.72 dB, quieter in 9/15, sign p=0.607, Wilcoxon p=0.048
+  follows the wind difference?            : Spearman rho=+0.07, p=0.814
+  quieting at ZERO wind difference (regr.): -4.17 dB (95% bootstrap -9.63 to -1.65)  [unstable extrapolation]
+
+TIME COURSE (visit minus normal days, dB; * = quieter in at least 75% of visits)
+  minutes      bird 2-7k        insect 10-13k     wind (km/h)
+  -40 to -35    -1.39 12/15*     -1.53 13/15*    +1.00
+  -35 to -30    -1.19 11/15      -1.39 11/15     +1.00
+  -30 to -25    -0.82 10/15      -1.11 12/15*    +1.00
+  -25 to -20    -0.84 10/15      -1.47 14/15*    +1.00
+  -20 to -15    -1.16 10/15      -1.47 13/15*    +1.40
+  -15 to -10    -1.30 12/15*     -1.38 13/15*    +1.80
+  -10 to  -5    -1.37 11/15      -1.53 12/15*    +1.80
+   -5 to  +0    -1.39 13/15*     -1.40 10/15     +1.80
+   +0 to  +5    -1.85 11/15      -1.20 10/15     +1.80  <- logged
+   +5 to +10    -2.41 13/15*     -0.69 11/15     +1.80
+  +10 to +15    -2.63 10/15      -1.61 12/15*    +1.80
+  +15 to +20    -1.45 11/15      -2.22 10/15     +1.80
+  +20 to +25    -1.76 12/15*     -1.17  9/15     +1.80
+  +25 to +30    -1.37 12/15*     -2.63 12/15*    +1.80
+  +30 to +35    -1.12 10/15      -0.22  9/15     +1.80
+  +35 to +40    -0.97 10/15      -1.01 11/15     +1.80
