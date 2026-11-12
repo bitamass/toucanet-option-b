@@ -1,0 +1,101 @@
+MODEL TIME COURSE: when does a model notice a human-presence visit it has never seen?
+============================================================================================
+Trained on: 0 to +10 min after the logged moment (people present) vs normal days; leave one visit out.
+Score = visit's mean model score minus its normal days' at the same clock time (log-odds).
+* = higher than normal days in at least 75% of visits. People become audible only in the last ~5 min before 0.
+
+Perch, full sound  (15 visits)
+  minutes      score   higher in
+  -40 to -35    +0.12    8/15 
+  -35 to -30    +0.10    8/15 
+  -30 to -25    +0.24    9/15 
+  -25 to -20    +0.18   10/15 
+  -20 to -15    +0.23   11/15 
+  -15 to -10    +0.36   12/15*
+  -10 to  -5    +0.17    9/15 
+   -5 to  +0    +0.31   10/15 
+   +0 to  +5    +0.17    8/15   <- logged
+   +5 to +10    +0.12    9/15   (trained here)
+  +10 to +15    +0.07    8/15 
+  +15 to +20    +0.11   10/15 
+  +20 to +25    +0.01    8/15 
+  +25 to +30    +0.19    9/15 
+  +30 to +35    -0.09    6/15 
+  +35 to +40    +0.02    8/15 
+  people present, 0 to +10 min: median +0.17, higher in 8/15, sign p=1.000, Wilcoxon p=0.229
+  EARLY, 25 to 5 min before   : median +0.29, higher in 10/15, sign p=0.302, Wilcoxon p=0.107
+  clip-level AUC, people present vs normal days (held-out visits): 0.57  (0.5 = chance)
+
+Perch, above 2 kHz, no human-tagged clips  (15 visits)
+  minutes      score   higher in
+  -40 to -35    -0.03    7/15 
+  -35 to -30    -0.02    7/15 
+  -30 to -25    +0.31   10/15 
+  -25 to -20    +0.23   11/15 
+  -20 to -15    +0.49   11/15 
+  -15 to -10    +0.35   12/15*
+  -10 to  -5    -0.07    6/15 
+   -5 to  +0    +0.78   11/15 
+   +0 to  +5    +0.04    8/15   <- logged
+   +5 to +10    +0.35   11/15   (trained here)
+  +10 to +15    -0.07    7/15 
+  +15 to +20    +0.46    9/15 
+  +20 to +25    +0.37    9/15 
+  +25 to +30    +0.05    8/15 
+  +30 to +35    -0.21    5/15 
+  +35 to +40    +0.27   10/15 
+  people present, 0 to +10 min: median +0.13, higher in 9/15, sign p=0.607, Wilcoxon p=0.208
+  EARLY, 25 to 5 min before   : median +0.18, higher in 9/15, sign p=0.607, Wilcoxon p=0.026
+  clip-level AUC, people present vs normal days (held-out visits): 0.59  (0.5 = chance)
+
+Spectrum, full sound  (15 visits)
+  minutes      score   higher in
+  -40 to -35    +0.25   10/15 
+  -35 to -30    +0.34   11/15 
+  -30 to -25    +1.18   12/15*
+  -25 to -20    +0.83   11/15 
+  -20 to -15    +0.97   12/15*
+  -15 to -10    +0.95   11/15 
+  -10 to  -5    +0.74   12/15*
+   -5 to  +0    +0.74   12/15*
+   +0 to  +5    +1.00   12/15*  <- logged
+   +5 to +10    +0.74    9/15   (trained here)
+  +10 to +15    +0.29    9/15 
+  +15 to +20    +1.27   11/15 
+  +20 to +25    +0.68   13/15*
+  +25 to +30    +0.60   12/15*
+  +30 to +35    +0.70    9/15 
+  +35 to +40    +0.53    9/15 
+  people present, 0 to +10 min: median +1.07, higher in 9/15, sign p=0.607, Wilcoxon p=0.026
+  EARLY, 25 to 5 min before   : median +1.13, higher in 11/15, sign p=0.118, Wilcoxon p=0.010
+  clip-level AUC, people present vs normal days (held-out visits): 0.70  (0.5 = chance)
+
+Spectrum, above 2 kHz, no human-tagged clips  (15 visits)
+  minutes      score   higher in
+  -40 to -35    +0.18    9/15 
+  -35 to -30    +0.38   11/15 
+  -30 to -25    +0.69   12/15*
+  -25 to -20    +0.56   12/15*
+  -20 to -15    +0.92   11/15 
+  -15 to -10    +0.78   11/15 
+  -10 to  -5    +0.84   12/15*
+   -5 to  +0    +1.09   10/15 
+   +0 to  +5    +1.24   10/15   <- logged
+   +5 to +10    +0.86   11/15   (trained here)
+  +10 to +15    +0.58   11/15 
+  +15 to +20    +1.13   11/15 
+  +20 to +25    +0.58   12/15*
+  +25 to +30    +0.48   11/15 
+  +30 to +35    +0.13    9/15 
+  +35 to +40    -0.09    6/15 
+  people present, 0 to +10 min: median +1.09, higher in 11/15, sign p=0.118, Wilcoxon p=0.015
+  EARLY, 25 to 5 min before   : median +0.90, higher in 10/15, sign p=0.302, Wilcoxon p=0.010
+  clip-level AUC, people present vs normal days (held-out visits): 0.69  (0.5 = chance)
+
+How to read it:
+  - 'people present' line and AUC: can the model recognise a visit at all, on visits it never saw?
+    For the 'full sound' models this is expected (it can hear people). For the 'above 2 kHz' models a
+    clearly positive result means the forest itself sounds different while people are there (question B).
+  - EARLY line: a positive, significant score 25 to 5 min before the logged moment means the model
+    notices the visit before the people are audible (question A, early warning).
+  - Each visit is compared with its own normal days, so daily rhythm and recorder differences cancel.
