@@ -1,0 +1,17 @@
+FAR HOURS: is the quiet about the PEOPLE or about the DAY?
+Visit days with at least one far window: 13 of 15  (far = at least 3 h from any event at that recorder and 2 h from any event anywhere; daylight only)
+All values: visit day minus the same clock time on that visit's normal days, -30 to +30 min, human-tagged clips removed (dB).
+
+BIRD band 2-7 kHz
+  near the visit            : median -1.57 dB, quieter in 11/15, sign p=0.118, Wilcoxon p=0.007
+  far from visits, same day : median -0.06 dB, quieter in 7/13, sign p=1.000, Wilcoxon p=0.635
+  near minus far (same day) : median -4.37 dB, more quiet near the visit in 10/13, sign p=0.092, Wilcoxon p=0.013
+
+INSECT band 10-13 kHz
+  near the visit            : median -1.24 dB, quieter in 12/15, sign p=0.035, Wilcoxon p=0.001
+  far from visits, same day : median -0.79 dB, quieter in 8/13, sign p=0.581, Wilcoxon p=0.244
+  near minus far (same day) : median -3.58 dB, more quiet near the visit in 9/13, sign p=0.267, Wilcoxon p=0.040
+
+WIND, visit day minus normal days (km/h)
+  near the visit            : median +1.95, windier in 12/15
+  far from visits, same day : median +2.28, windier in 11/13
