@@ -1,0 +1,65 @@
+FOLLOW-UP ON THE MODEL TIME COURSE (script 92)
+============================================================================================
+
+0. HOLM CORRECTION over the 8 Wilcoxon tests in script 92
+   Perch, full sound | people present                             p=0.229  corrected p=0.416
+   Perch, full sound | EARLY                                      p=0.107  corrected p=0.321
+   Perch, above 2 kHz, no human-tagged clips | people present     p=0.208  corrected p=0.416
+   Perch, above 2 kHz, no human-tagged clips | EARLY              p=0.026  corrected p=0.130
+   Spectrum, full sound | people present                          p=0.026  corrected p=0.130
+   Spectrum, full sound | EARLY                                   p=0.010  corrected p=0.080
+   Spectrum, above 2 kHz, no human-tagged clips | people present  p=0.015  corrected p=0.090
+   Spectrum, above 2 kHz, no human-tagged clips | EARLY           p=0.010  corrected p=0.080
+
+1. SHAPE: middle of the visit (-10 to +10 min) minus its edges (-40 to -30 and +30 to +40 min)
+   (a visit compared with itself; positive = score peaks around the visit)
+   Spectrum, above 2 kHz    middle - both edges : median +0.33, higher in 10/15, sign p=0.302, Wilcoxon p=0.121
+                            middle - early edge : median +0.45, higher in 12/15, sign p=0.035, Wilcoxon p=0.055
+                            whole hour vs normal: median +0.65, higher in 12/15, sign p=0.035, Wilcoxon p=0.008
+   Spectrum, full sound     middle - both edges : median +0.42, higher in 10/15, sign p=0.302, Wilcoxon p=0.083
+                            middle - early edge : median +0.70, higher in 12/15, sign p=0.035, Wilcoxon p=0.018
+                            whole hour vs normal: median +0.79, higher in 12/15, sign p=0.035, Wilcoxon p=0.005
+   Perch, above 2 kHz       middle - both edges : median +0.10, higher in 9/15, sign p=0.607, Wilcoxon p=0.121
+                            middle - early edge : median +0.02, higher in 9/15, sign p=0.607, Wilcoxon p=0.303
+                            whole hour vs normal: median +0.16, higher in 10/15, sign p=0.302, Wilcoxon p=0.073
+
+2. WEATHER around the logged moment (hourly, shifted -2 h): visit minus its normal days
+   Temperature  median -0.05, higher in 7/15, sign p=1.000, Wilcoxon p=0.649
+   Humidity     median +0.00, higher in 6/15, sign p=0.607, Wilcoxon p=0.293
+   Windspeed    median +1.95, higher in 12/15, sign p=0.035, Wilcoxon p=0.010
+   Does the spectrum (above 2 kHz) score follow the weather difference? (Spearman, across visits)
+     whole-hour score vs Temperature  rho=+0.74  p=0.001  (n=15)
+     whole-hour score vs Humidity     rho=-0.70  p=0.004  (n=15)
+     whole-hour score vs Windspeed    rho=-0.31  p=0.262  (n=15)
+   Score with the weather differences regressed out (rough, n=15): median +0.67, higher in 15/15, sign p=0.000, Wilcoxon p=0.000
+
+3. WHICH PITCH BANDS DIFFER? visit minus normal days, -30 to +30 min, above 2 kHz, no human-tagged clips (dB)
+   band (kHz)   median dB   louder in
+    2.00- 2.67     -1.42      2/15*
+    2.67- 3.33     -1.30      4/15 
+    3.33- 4.00     -1.06      3/15*
+    4.00- 4.67     -0.90      4/15 
+    4.67- 5.33     -1.65      3/15*
+    5.33- 6.00     -2.59      3/15*
+    6.00- 6.67     -1.24      3/15*
+    6.67- 7.33     -0.83      6/15 
+    7.33- 8.00     +0.74      8/15 
+    8.00- 8.67     -0.22      7/15 
+    8.67- 9.33     -1.76      5/15 
+    9.33-10.00     -1.70      5/15 
+   10.00-10.67     -1.40      2/15*
+   10.67-11.33     -1.69      2/15*
+   11.33-12.00     -1.39      3/15*
+   12.00-12.67     -0.98      5/15 
+   12.67-13.33     -1.04      3/15*
+   13.33-14.00     -1.28      4/15 
+   14.00-14.67     -1.44      4/15 
+   14.67-15.33     -2.14      4/15 
+   15.33-16.00     -1.56      5/15 
+
+How to read it:
+  0: corrected p below 0.05 = survives testing several models and windows at once.
+  1: a positive, significant 'middle - both edges' means the score peaks around the visit (a reaction, or
+     people around longer than logged). Flat (near 0) means visit periods just sound different all hour.
+  2: weather differences, or a strong rho, mean weather may explain the model's score.
+  3: * = same direction in at least 75% of visits; tells you what the model is hearing (e.g. insects at 12-13 kHz).
