@@ -1,0 +1,64 @@
+ROBUSTNESS AND SPECIES (follow-up to script 95)
+============================================================================================
+
+1. ROBUSTNESS: near the visit minus far hours, same day (dB; negative = quieter near the visit)
+   visit day          recorder        bird near  bird far   bird near-far   insect near-far
+   2025-03-20 17:24   Audio_Moth_4     -15.80    -1.58      -14.22          -14.48
+   2025-03-19 16:47   Audio_Moth_4     -10.03    -0.45       -9.58           -9.69
+   2025-03-19 17:13   Audio_Moth_2      -8.42    -0.06       -8.36           -3.58
+   2025-03-20 16:40   Audio_Moth_4      -9.29    -1.10       -8.19           -8.91
+   2025-03-18 17:00   Audio_Moth_2      -7.92    +0.18       -8.10           -6.77
+   2025-03-19 17:24   Audio_Moth_1      -4.22    +1.16       -5.38           -6.76
+   2025-03-19 07:35   Audio_Moth_1      -2.65    +1.73       -4.37           -4.37
+   2025-03-19 08:38   Audio_Moth_4      -0.44    +0.44       -0.88           +0.11
+   2025-03-19 07:51   Audio_Moth_2      +0.00    +0.76       -0.76           +1.48
+   2025-03-21 08:51   Audio_Moth_6      -1.24    -1.00       -0.24           -0.46
+   2025-03-19 17:08   Audio_Moth_3      +0.42    +0.06       +0.36           -1.26
+   2025-03-21 08:39   Audio_Moth_5      -1.46    -2.15       +0.69           +1.93
+   2025-03-19 08:53   Audio_Moth_5      +1.56    -0.61       +2.17           +1.34
+   bird: all 13 days: median -4.37, quieter near in 10/13, Wilcoxon p=0.013
+   bird: leaving out one day at a time: median -4.88 to -2.62, Wilcoxon p 0.005 to 0.027 (weakest without 2025-03-19 07:35: 9/12 quieter, p=0.027)
+   insect: all 13 days: median -3.58, quieter near in 9/13, Wilcoxon p=0.040
+   insect: leaving out one day at a time: median -3.97 to -2.42, Wilcoxon p 0.021 to 0.077 (weakest without 2025-03-19 07:35: 8/12 quieter, p=0.077)
+   (a result that stays below p = 0.05 whichever single day is dropped does not hinge on one day)
+
+2. WHICH BIRDS GO QUIET NEAR PEOPLE? (13 visit days; share of 3-s clips with the species detected)
+   effect = (near - normal days) - (far hours - normal days), in percentage points of clips
+   ANY BIRD: median +0.79 pp, fewer near the visit in 6/13, Wilcoxon p=0.685
+
+   species (detected in >= 30 clips)          median   mean    fewer/more near   Wilcoxon p   FDR q
+   Blue-crowned Manakin                      -0.02  +1.16       7/4            1.000      1.00
+   Chestnut-backed Antbird                   +0.00  -0.69       6/5            0.450      0.89
+   Great Tinamou                             +0.00  -0.44       6/3            0.215      0.68
+   Baird's Trogon                            +0.00  -0.40       3/3            0.688      0.89
+   White-whiskered Puffbird                  +0.00  -0.39       6/3            0.570      0.89
+   Bright-rumped Attila                      +0.00  -0.37       5/4            0.621      0.89
+   Chiriqui Foliage-gleaner                  +0.00  -0.34       2/0              nan       nan
+   Band-tailed Barbthroat                    +0.00  -0.20       6/2            0.148      0.68
+   Scaly-breasted Wren                       +0.00  -0.20       5/4            0.516      0.89
+   Dot-winged Antwren                        +0.00  -0.17       5/2            0.281      0.69
+   Scale-crested Pygmy-Tyrant                +0.00  -0.15       2/1              nan       nan
+   Rufous-tailed Jacamar                     +0.00  -0.14       2/0              nan       nan
+   Long-billed Gnatwren                      +0.00  -0.09       4/0            0.125      0.68
+   Riverside Wren                            +0.00  -0.00       4/4            0.773      0.95
+   Slaty-tailed Trogon                       +0.00  +0.03       3/2            1.000      1.00
+   Blue-black Grosbeak                       +0.00  +0.04       2/3            0.688      0.89
+   Streak-chested Antpitta                   +0.00  +0.06       4/6            0.264      0.69
+   Short-billed Pigeon                       +0.00  +0.15       5/5            1.000      1.00
+   Black-hooded Antshrike                    +0.00  +0.25       1/2              nan       nan
+   Bicolored Antbird                         +0.00  +0.29       1/2              nan       nan
+   Red-capped Manakin                        +0.00  +0.51       3/5            0.109      0.68
+   Yellow-throated Toucan                    +0.00  +1.55       1/5            0.062      0.68
+   Black-cheeked Ant-Tanager                 +0.00  +2.05       4/6            0.193      0.68
+   Black-capped Pygmy-Tyrant                 +0.04  -0.31       5/7            0.835      0.97
+   Orange-billed Sparrow                     +0.04  -0.95       4/8            0.677      0.89
+   Buff-rumped Warbler                       +0.04  +0.19       4/7            0.622      0.89
+   Rufous Piha                               +0.12  +0.20       4/7            0.206      0.68
+
+How to read it:
+  1: if the near-minus-far result stays clearly negative and p stays low whichever day is left out,
+     it is not driven by one unusual day; the per-day table shows which days drive it.
+  2: species at the top (negative effect, most visits 'fewer near') are the ones that go quiet near people,
+     beyond the normal daily rhythm and the day's conditions. FDR q < 0.1 survives testing many species;
+     with 13 visit days, expect few to pass, so treat the list as leads for listening.
+
