@@ -1,0 +1,55 @@
+SAME MOMENT, OTHER RECORDERS: is the quiet about the PEOPLE or about the EVENING?
+============================================================================================
+7 of 15 visits have at least one unvisited recorder at the same time (no event there within 60 min); up to 3 per visit.
+All values: -30 to +30 min around the logged moment, each recorder minus its own normal days at that clock time,
+human-tagged clips removed (dB).
+
+ALL VISITS  (n = 15)
+  bird 2-7 kHz    visited recorder        : median -1.57 dB, quieter in 11/15, sign p=0.118, Wilcoxon p=0.007
+  bird 2-7 kHz    unvisited, same time    : median -1.80 dB, quieter in 6/7, sign p=0.125, Wilcoxon p=0.031
+  bird 2-7 kHz    visited minus unvisited : median -0.74 dB, quieter where people were in 4/7, sign p=1.000, Wilcoxon p=1.000
+  insect 10-13 kHz visited recorder        : median -1.24 dB, quieter in 12/15, sign p=0.035, Wilcoxon p=0.001
+  insect 10-13 kHz unvisited, same time    : median -1.99 dB, quieter in 6/7, sign p=0.125, Wilcoxon p=0.031
+  insect 10-13 kHz visited minus unvisited : median -0.52 dB, quieter where people were in 4/7, sign p=1.000, Wilcoxon p=0.578
+
+AFTERNOON visits (12:00 or later)  (n = 7)
+  bird 2-7 kHz    visited recorder        : median -8.42 dB, quieter in 6/7, sign p=0.125, Wilcoxon p=0.031
+  bird 2-7 kHz    unvisited, same time    : n=2 (too few to test); values -8.5, -13.1
+  bird 2-7 kHz    visited minus unvisited : n=2 (too few to test); values -0.8, -2.7
+  insect 10-13 kHz visited recorder        : median -6.60 dB, quieter in 7/7, sign p=0.016, Wilcoxon p=0.016
+  insect 10-13 kHz unvisited, same time    : n=2 (too few to test); values -4.8, -4.4
+  insect 10-13 kHz visited minus unvisited : n=2 (too few to test); values -6.1, -12.3
+
+MORNING visits (before 12:00)  (n = 8)
+  bird 2-7 kHz    visited recorder        : median -0.84 dB, quieter in 5/8, sign p=0.727, Wilcoxon p=0.312
+  bird 2-7 kHz    unvisited, same time    : median -1.07 dB, quieter in 4/5, sign p=0.375, Wilcoxon p=0.125
+  bird 2-7 kHz    visited minus unvisited : median +1.46 dB, quieter where people were in 2/5, sign p=1.000, Wilcoxon p=0.625
+  insect 10-13 kHz visited recorder        : median -0.69 dB, quieter in 5/8, sign p=0.727, Wilcoxon p=0.148
+  insect 10-13 kHz unvisited, same time    : median -0.15 dB, quieter in 4/5, sign p=0.375, Wilcoxon p=0.125
+  insect 10-13 kHz visited minus unvisited : median +0.40 dB, quieter where people were in 2/5, sign p=1.000, Wilcoxon p=0.625
+
+PER VISIT (dB)
+  time              recorder       part        bird: visited  unvisited  diff    insect: visited  unvisited  diff
+  2025-03-18 17:00  Audio_Moth_2   afternoon      -7.92      +nan    +nan           -5.05      +nan    +nan
+  2025-03-19 07:35  Audio_Moth_1   morning        -2.65     -0.78   -1.87           -1.41     -0.15   -1.26
+  2025-03-19 07:51  Audio_Moth_2   morning        +0.00     +0.75   -0.74           +0.26     -0.14   +0.40
+  2025-03-19 08:38  Audio_Moth_4   morning        -0.44     -1.90   +1.46           +0.20     -4.03   +4.23
+  2025-03-19 08:53  Audio_Moth_5   morning        +1.56     -1.80   +3.36           +0.59     -1.99   +2.59
+  2025-03-19 09:07  Audio_Moth_6   morning        +0.46     -1.07   +1.53           -0.49     +0.03   -0.52
+  2025-03-19 16:47  Audio_Moth_4   afternoon     -10.03      +nan    +nan          -11.23      +nan    +nan
+  2025-03-19 17:08  Audio_Moth_3   afternoon      +0.42      +nan    +nan           -0.60      +nan    +nan
+  2025-03-19 17:13  Audio_Moth_2   afternoon      -8.42      +nan    +nan           -4.71      +nan    +nan
+  2025-03-19 17:24  Audio_Moth_1   afternoon      -4.22      +nan    +nan           -6.60      +nan    +nan
+  2025-03-20 16:40  Audio_Moth_4   afternoon      -9.29     -8.50   -0.79          -10.88     -4.81   -6.07
+  2025-03-20 17:24  Audio_Moth_4   afternoon     -15.80    -13.13   -2.67          -16.71     -4.40  -12.31
+  2025-03-21 08:28  Audio_Moth_4   morning        -1.57      +nan    +nan           -1.04      +nan    +nan
+  2025-03-21 08:39  Audio_Moth_5   morning        -1.46      +nan    +nan           -0.90      +nan    +nan
+  2025-03-21 08:51  Audio_Moth_6   morning        -1.24      +nan    +nan           -1.24      +nan    +nan
+
+How to read it:
+  - 'visited minus unvisited' clearly negative (especially in the afternoon) -> only the recorder where people
+    were went quiet; the evening's weather and light were the same everywhere, so it is the people.
+  - unvisited recorders just as quiet -> it was a quiet evening, not the people.
+  - Unvisited recorders may still be within earshot of the team on some visits; that would make this test
+    conservative (it would hide part of a real effect, not create a false one).
+
