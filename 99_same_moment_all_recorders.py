@@ -7,15 +7,16 @@ normal days pick that up. Script 98 showed unvisited recorders were often quiet 
 This analysis compares recorders ONLY AT THE SAME MOMENT, using all six recorders on every day with
 team activity (human presence or played sounds), every 10-min slot in daylight (06:00-18:30):
 
-  1. Each recorder-slot: bird (2-7 kHz) and insect (10-13 kHz) level minus that recorder's normal level at
-     that clock time (median of up to 5 days with no team activity at all; if too few, days with no event at
-     that recorder). Human-tagged clips removed.
+  1. Each recorder-slot: bird (2-7 kHz) and insect (10-13 kHz) level, human-tagged clips removed. Each spot's
+     own daily rhythm is removed with a recorder x hour intercept learned from all days (the recordings have
+     no days without team activity).
   2. Each recorder-slot is labelled by its time to the nearest team event AT THAT RECORDER that day:
        approach : team arrives in 20-60 min      near : within 20 min of the team (before or after)
        after    : team left 20-60 min ago        mid  : 60-120 min away
        far      : more than 2 h away or no event there that day  (reference)
-  3. Model with one intercept per moment (day x slot): only differences BETWEEN recorders at the same
-     moment count, so weather, light, the evening chorus and season cancel completely.
+  3. Model with one intercept per moment (day x slot) and one per recorder x hour: only differences BETWEEN
+     recorders at the same moment, beyond each spot's usual rhythm, count; weather, light and the evening
+     chorus cancel completely.
   4. Permutation test: the team's schedule is moved to other recorders at random (same times, same days),
      2000 times. p = how often a fake schedule shows as much quiet as the real one. One honest number.
 
@@ -306,31 +307,28 @@ def cell_db(names, minimum):
     return np.array([A[bmask].mean(), A[imask].mean()])
 
 
-# ---------------- normal level per recorder x clock slot ----------------
-norm = {}
-for (r, d, s), names in norm_clips.items():
-    x = cell_db(names, 2)
-    if x is not None:
-        norm.setdefault((r, s), []).append(x)
-norm = {k: np.median(v, axis=0) for k, v in norm.items() if len(v) >= 2}
-
+# ---------------- recorder-slot levels ----------------
+# There are no days without team activity in the recordings, so instead of a "normal day" baseline the model
+# has two sets of intercepts: one per MOMENT (day x slot: weather, light, evening chorus) and one per
+# RECORDER x HOUR (each spot's own daily rhythm, learned from all days). Only what is left over can be
+# explained by where the team was.
 rows = []
 for (r, d, s), names in cell_clips.items():
     x = cell_db(names, 2)
-    if x is None or (r, s) not in norm:
+    if x is None:
         continue
-    y = x - norm[(r, s)]
-    rows.append(dict(rec=r, day=d, slot=s, y_bird=y[0], y_insect=y[1]))
+    rows.append(dict(rec=r, day=d, slot=s, y_bird=x[0], y_insect=x[1]))
 C = pd.DataFrame(rows)
 if C.empty:
     sys.exit("No usable recorder-slots.")
 C["moment"] = C.day.astype(str) + "_" + C.slot.astype(str)
 C = C[C.groupby("moment").rec.transform("nunique") >= 2].reset_index(drop=True)
-print(f"Usable recorder-slots: {len(C):,} in {C.moment.nunique():,} moments")
+C["rechour"] = C.rec + "_" + (C.slot // 60).astype(str)
+print(f"Usable recorder-slots: {len(C):,} in {C.moment.nunique():,} moments "
+      f"({C.day.nunique()} days, {C.rec.nunique()} recorders)")
 if len(C) < 50:
     sys.exit("Too few moments with two or more recorders measured.")
 
-# signed minutes from each slot centre to the nearest event, for every (day, slot, SOURCE recorder)
 days = sorted(C.day.unique())
 slots = sorted(C.slot.unique())
 di = {d: k for k, d in enumerate(days)}
@@ -350,51 +348,54 @@ for d in days:
 C_d = C.day.map(di).values
 C_s = C.slot.map(si).values
 C_r = C.rec.map(ri).values
-moment_codes = pd.factorize(C.moment)[0]
+G1 = pd.factorize(C.moment)[0]
+G2 = pd.factorize(C.rechour)[0]
+n1, n2 = np.bincount(G1).astype(float), np.bincount(G2).astype(float)
 
 BINS = ["approach", "near", "after", "mid"]
 
 
 def label(dt):
     lab = np.full(dt.shape, "far", dtype=object)
-    a = np.abs(dt)
+    a_ = np.abs(dt)
     lab[(dt >= -60) & (dt < -20)] = "approach"
-    lab[a < 20] = "near"
+    lab[a_ < 20] = "near"
     lab[(dt >= 20) & (dt < 60)] = "after"
-    lab[(a >= 60) & (a < 120)] = "mid"
+    lab[(a_ >= 60) & (a_ < 120)] = "mid"
     lab[np.isnan(dt)] = "far"
     return lab
 
 
-def demean(M):
-    M = np.asarray(M, dtype=float)
-    out = M.copy()
-    sums = np.zeros((moment_codes.max() + 1,) + M.shape[1:])
-    np.add.at(sums, moment_codes, M)
-    cnt = np.bincount(moment_codes).astype(float)
-    return out - (sums / cnt.reshape((-1,) + (1,) * (M.ndim - 1)))[moment_codes]
+def twoway(M, iters=60):
+    """Remove moment and recorder x hour intercepts (alternating projections)."""
+    M = np.array(M, dtype=float)
+    one = M.ndim == 1
+    if one:
+        M = M[:, None]
+    for _ in range(iters):
+        for G, n in [(G1, n1), (G2, n2)]:
+            for j in range(M.shape[1]):
+                M[:, j] -= (np.bincount(G, weights=M[:, j]) / n)[G]
+    return M[:, 0] if one else M
 
 
-Yb, Yi = demean(C.y_bird.values), demean(C.y_insect.values)
+Yb, Yi = twoway(C.y_bird.values), twoway(C.y_insect.values)
 
 
 def fit(labels):
-    X = np.column_stack([(labels == b).astype(float) for b in BINS])
-    Xd = demean(X)
-    keep = Xd.std(axis=0) > 0
-    beta = np.full(len(BINS), np.nan)
+    X = twoway(np.column_stack([(labels == b).astype(float) for b in BINS]))
+    keep = X.std(axis=0) > 1e-9
+    bb, bi = np.full(len(BINS), np.nan), np.full(len(BINS), np.nan)
     if keep.any():
-        coef_b = np.linalg.lstsq(Xd[:, keep], Yb, rcond=None)[0]
-        coef_i = np.linalg.lstsq(Xd[:, keep], Yi, rcond=None)[0]
-        bb, bi = beta.copy(), beta.copy()
-        bb[keep], bi[keep] = coef_b, coef_i
-        return bb, bi
-    return beta, beta
+        bb[keep] = np.linalg.lstsq(X[:, keep], Yb, rcond=None)[0]
+        bi[keep] = np.linalg.lstsq(X[:, keep], Yi, rcond=None)[0]
+    return bb, bi
 
 
 real_lab = label(DT[C_d, C_s, C_r])
 C["bin"] = real_lab
 C["dt_min"] = DT[C_d, C_s, C_r]
+C["resid_bird"], C["resid_insect"] = Yb, Yi
 C.to_csv(os.path.join(OUT, "same_moment_cells.csv"), index=False)
 real_b, real_i = fit(real_lab)
 
@@ -402,8 +403,7 @@ print(f"Permutation test ({N_PERM} fake schedules)...")
 perm_b, perm_i = [], []
 for _ in range(N_PERM):
     P = np.array([rng5.permutation(len(RECS)) for _ in days])     # day x recorder -> source recorder
-    lab = label(DT[C_d, C_s, P[C_d, C_r]])
-    b, i_ = fit(lab)
+    b, i_ = fit(label(DT[C_d, C_s, P[C_d, C_r]]))
     perm_b.append(b)
     perm_i.append(i_)
 perm_b, perm_i = np.array(perm_b), np.array(perm_i)
@@ -413,61 +413,40 @@ def pvals(real, perm, k):
     pr = perm[:, k][~np.isnan(perm[:, k])]
     if np.isnan(real[k]) or len(pr) == 0:
         return np.nan, np.nan
-    one = (1 + (pr <= real[k]).sum()) / (1 + len(pr))
-    two = (1 + (np.abs(pr) >= abs(real[k])).sum()) / (1 + len(pr))
-    return one, two
+    return (1 + (pr <= real[k]).sum()) / (1 + len(pr)), (1 + (np.abs(pr) >= abs(real[k])).sum()) / (1 + len(pr))
 
 
 out = ["SAME MOMENT, ALL RECORDERS: are recorders near the team quieter than the others at that moment?", "=" * 92,
-       f"{len(days)} days with team activity, {len(C):,} recorder-slots (10 min, 06:00-18:30) in {C.moment.nunique():,} moments.",
-       "Level = recorder-slot minus that recorder's normal level at that clock time; compared only between recorders",
-       "at the same moment. Reference = recorders more than 2 h from any team event that day.", "",
-       "  slots per group: " + ", ".join(f"{b} {int((real_lab == b).sum())}" for b in BINS + ["far"]), ""]
+       f"{C.day.nunique()} days, {C.rec.nunique()} recorders, {len(C):,} recorder-slots (10 min, 06:00-18:30) in {C.moment.nunique():,} moments.",
+       "Model: level = moment intercept (weather, light, evening chorus) + recorder x hour intercept (each spot's daily",
+       "rhythm) + effect of the team's distance in time. Reference = more than 2 h from any team event at that recorder.", "",
+       "  slots per group: " + ", ".join(f"{b} {int((real_lab == b).sum())}" for b in BINS + ["far"]),
+       "  slots per part of day: " + f"morning {int((C.slot < 720).sum())}, afternoon {int((C.slot >= 720).sum())}", ""]
 desc = {"approach": "APPROACH (team arrives in 20-60 min)", "near": "NEAR (within 20 min of the team) ",
         "after": "AFTER (team left 20-60 min ago)   ", "mid": "MID (60-120 min from the team)    "}
 for band, real, perm in [("BIRD 2-7 kHz", real_b, perm_b), ("INSECT 10-13 kHz", real_i, perm_i)]:
-    out.append(band + "   (dB vs far recorders at the same moment; p from fake schedules)")
+    out.append(band + "   (dB vs far, same moment; p from fake schedules)")
     for k, b in enumerate(BINS):
         one, two = pvals(real, perm, k)
         out.append(f"  {desc[b]}: {real[k]:+6.2f} dB   p(quieter)={one:.3f}   p(two-sided)={two:.3f}")
     out.append("")
 
-for part, mask in [("AFTERNOON moments (12:00 or later)", C.slot.values >= 12 * 60), ("MORNING moments (before 12:00)", C.slot.values < 12 * 60)]:
-    sub = mask
-    if sub.sum() < 50:
-        continue
-    yb, yi = demean(C.y_bird.values)[sub], demean(C.y_insect.values)[sub]
-    X = demean(np.column_stack([(real_lab == b).astype(float) for b in BINS]))[sub]
-    keep = X.std(axis=0) > 0
-    cb = np.full(len(BINS), np.nan); ci = cb.copy()
-    cb[keep] = np.linalg.lstsq(X[:, keep], yb, rcond=None)[0]
-    ci[keep] = np.linalg.lstsq(X[:, keep], yi, rcond=None)[0]
-    out.append(f"{part}: bird " + ", ".join(f"{b} {cb[k]:+.2f}" for k, b in enumerate(BINS)) +
-               " | insect " + ", ".join(f"{b} {ci[k]:+.2f}" for k, b in enumerate(BINS)))
-out.append("")
-
-# time course (descriptive): median within-moment difference vs far recorders, by 20-min bins of signed time
-out.append("TIME COURSE (descriptive): recorder minus the far recorders at the same moment, median dB")
-out.append("  minutes from team event at this recorder    n slots   bird     insect")
-dtv = C.dt_min.values
-far_mask = real_lab == "far"
-mom = moment_codes
-far_mean_b = pd.Series(C.y_bird.values[far_mask]).groupby(mom[far_mask]).mean()
-far_mean_i = pd.Series(C.y_insect.values[far_mask]).groupby(mom[far_mask]).mean()
+out.append("TIME COURSE (descriptive): leftover level after removing moment and recorder x hour intercepts, median dB")
+out.append("  minutes from the team event at this recorder   n slots   bird     insect")
+far = C[C.bin == "far"]
+out.append(f"  far (> 2 h or none that day)                    {len(far):>5}   {far.resid_bird.median():+6.2f}   {far.resid_insect.median():+6.2f}")
 for lo in range(-120, 120, 20):
-    sel = (dtv >= lo) & (dtv < lo + 20) & np.isin(mom, far_mean_b.index)
-    if sel.sum() < 5:
+    x = C[(C.dt_min >= lo) & (C.dt_min < lo + 20)]
+    if len(x) < 4:
         continue
-    db_ = C.y_bird.values[sel] - far_mean_b.loc[mom[sel]].values
-    di_ = C.y_insect.values[sel] - far_mean_i.loc[mom[sel]].values
-    out.append(f"  {lo:+4d} to {lo + 20:+4d}                             {sel.sum():>5}   {np.median(db_):+6.2f}   {np.median(di_):+6.2f}")
+    out.append(f"  {lo:+4d} to {lo + 20:+4d}                                  {len(x):>5}   {x.resid_bird.median():+6.2f}   {x.resid_insect.median():+6.2f}")
 out += ["",
         "How to read it:",
         "  - NEAR clearly negative with p(quieter) below 0.05 -> recorders where the team is are quieter than the other",
-        "    recorders at the very same moment; weather, light and the evening chorus cannot cause that.",
-        "  - APPROACH negative and low p -> the forest goes quiet before the team arrives (early warning).",
-        "  - p comes from moving the team's real schedule to random other recorders 2000 times, so it already",
-        "    accounts for chance; it is the one number to quote.",
+        "    recorders at the very same moment, beyond each spot's usual rhythm; weather and light cannot cause that.",
+        "  - APPROACH negative with low p -> the forest goes quiet before the team arrives (early warning).",
+        "  - A clearly POSITIVE value means louder near the team (e.g. people's own sounds above 2 kHz, or birds calling).",
+        "  - p comes from moving the team's real schedule to random other recorders 2000 times; it is the number to quote.",
         "  - Played-sound events count as team presence too (the team was there to play them)."]
 txt = "\n".join(out)
 print(txt)
