@@ -8,25 +8,27 @@ This deck covers my fall work on Sammy's question: can we detect people from the
 
 This slide walks through what I tested, in order, and what each step showed.
 
-Step 1, the data. I use bioacoustics_dataset.csv, which Sammy confirmed: every 3-second clip, about 631,000. Following Daan's note, I line every visit up on the single moment it was logged in the field, because the labelled windows were added afterwards.
+Step 1, the data: bioacoustics_dataset.csv, every 3-second clip, about 631,000, with each visit lined up on the moment it was logged in the field.
 
-Step 2, BirdNET on all six recorders. Birds were heard about as often around visits as at the same clock time on normal days. With this many visits, a drop of about half or more is ruled out.
+Step 2, BirdNET: birds were heard about as often around visits as on normal days, so there is no dramatic silence.
 
-Step 3, the raw audio. The forest was louder after 23 of 27 visits, at five of six recorders, but not significant once corrected for the number of measures.
+Step 3, the raw audio: the forest was a bit louder after visits, but that turned out to be mostly an insect chorus at 12 to 13 kilohertz that follows the weather.
 
-Step 4, what that extra sound is. It is mostly a narrow insect chorus around 12 to 13 kilohertz, and it follows the weather: those hours were warmer and drier.
+Step 4, the exact logged timing: one bird pitch range was a little quieter in the 25 minutes before people were logged, in 9 of 15 visits. A hint only.
 
-Step 5, the exact logged timing. The 6 to 8 kilohertz band is a little quieter in the 25 minutes before people are logged, in 9 of 15 visits, p = 0.07. A hint, not a result.
+Step 5, a gunshot check: our measures pick up the played sounds and the people, but no clear animal reaction.
 
-Step 6, a gunshot check, to see whether our measures can see any animal reaction at all. They clearly pick up the played sounds and the people, but show no clear reaction from birds or insects.
+Step 6, a model that cannot hear people: using only sound above 2 kilohertz, with voice and engine clips removed, it still recognises visits it has never seen, with an AUC of 0.69. So something in the forest's sound differs around visits.
 
-Step 7, a model that cannot hear people. Using only sound above 2 kilohertz, with every clip tagged as voice, engine or dog removed, a simple model still recognises visits it has never seen, with an AUC of 0.69.
+Step 7, what it hears: birds and insects are quieter around visits, and quieter than at hours far from the visit on the same day.
 
-Step 8, the wind check. What the model hears is birds and insects being quieter around visits. That quiet is already there 40 minutes before the logged moment, and visit hours were about 2 kilometres per hour windier, so wind was a possible explanation.
+Step 8, along the route: birds at the next recorder get quieter while the team is still one stop away, in 8 of 10 visits.
 
-Step 9, the deciding test. On the same visit days, hours far from any activity are normal for birds, even though they were just as windy. So the quiet is tied to the time people are in the area, not to the day or its wind.
+Step 9, the important check: at the same moments, recorders the team did not visit were often quiet too. So much of the quiet around visits comes from the days themselves, especially the evenings, not the people.
 
-So far: birds and insects go quieter when people are in the area. A model that cannot hear people picks this up, and it is not explained by the weather of the day. It is strong evidence, but not yet corrected for the number of tests I have run. The next slides show the last steps in detail.
+Step 10, the cleanest test: comparing all six recorders only at the same moment, so weather, light and the evening chorus cancel, recorders within two hours of the team are about 1 decibel quieter in the insect band than the others, with a permutation p of 0.02. Birds lean the same way, about half a decibel, p = 0.09.
+
+So the forest's response to people is real but small, and it only shows when recorders are compared with each other at the same moment.
 
 ## Slide 3: Mostly insects, not birds
 
@@ -78,24 +80,46 @@ On weather: temperature and humidity at visit hours were the same as on the norm
 
 ## Slide 7: Quiet near visits, not the rest of the day
 
-This is the test that separates the two explanations: is the quiet about the people, or about the day?
+This test compares the time around each visit with hours far from any activity on the same day, each against normal days at the same clock time.
 
-On each visit day I took hours far from any activity, at least 3 hours from any event at that recorder and 2 hours from any event anywhere, in daylight, and compared them with the same clock time on that visit's normal days, exactly as I did for the visits. Thirteen of the 15 visit days had such hours.
+The orange bars are near the visit: birds about 1.6 decibels quieter, insects about 1.2. The grey bars are the far hours of the same days: for birds essentially normal, for insects a little quieter.
 
-The orange bars are near the visit: birds about 1.6 decibels quieter, insects about 1.2. The grey bars are the far hours of the same days. For birds, the far hours are normal, essentially zero. For insects they are a little quieter, but not significantly.
+Within the same day, it is quieter near the visit than at the far hours, in 10 of 13 days for birds and 9 of 13 for insects. And the far hours were just as windy, so wind alone does not explain it.
 
-The key point is wind. The far hours were just as windy as the hours near the visit, about 2.3 kilometres per hour above normal days. So the whole day was windy, but the birds were only quiet near the visit. Wind, or anything else about the day, cannot explain the bird quieting.
+But when I looked visit by visit, the big drops, 5 to 14 decibels, are all late-afternoon visits around 5 pm, when the evening chorus builds. The far hours I compared against are mostly midday, when the soundscape is much steadier. So this comparison does not control well for the evening. The next slide checks exactly that, by looking at recorders the team did not visit at the same moment.
 
-Comparing within the same day, which cancels the weather and the season, the time around the visit is quieter than the far hours in 10 of 13 visit days for birds, p = 0.01, and 9 of 13 for insects, p = 0.04.
+## Slide 8: Much of the quiet is the day itself
 
-So this is the first result that holds up against the main alternative: birds, and partly insects, go quieter when people are in the area. It also explains why the quiet starts about 40 minutes before the logged moment: the team was probably already nearby, walking in or setting up, before they logged their presence. The caveat is that I have run many tests, and this is not yet corrected for that, so I call it strong evidence, not proof.
+Two checks changed how I read the earlier results.
 
-## Slide 8: Where we are, and what would settle it
+First, the day. At the exact moments of the visits, I looked at recorders the team did not visit, with no activity within an hour. They were also quieter than their normal days, in 6 of 7 visits, birds about 1.8 decibels. On the two evenings I could check, the unvisited recorders were just as quiet for birds as the visited one, minus 8.5 and minus 13 decibels. So the big evening drop in birds was a quiet evening everywhere, not a reaction to people. Much of the quiet around visits comes from the days themselves.
 
-To sum up. Birds, and partly insects, go quieter when people are in the area. A simple model that hears only sound above 2 kilohertz, with human sounds removed, picks this up on visits it has never seen. And the far-hours test shows it is not the weather of the day: at other hours of the same, equally windy days, the birds are normal.
+Second, the route. The team walks between recorders and logs at each one. At the next recorder, birds were quieter while the team was still one stop away than before the team reached the previous stop, in 8 of 10 visits. That is a comparison within the same visit, so it is less affected by the day, and it points toward an early reaction, but with ten visits it is borderline.
 
-Why it is not proof yet: there are only 15 usable visits and I have run many tests, so after correction it is not formally significant. And because the quiet starts about 40 minutes before the logged moment, I can't yet tell whether it is a reaction to people already nearby or a true early warning; most likely the team was in the area before they logged their presence.
+Third, insects: on those two evenings, the insect chorus was 6 and 12 decibels quieter at the visited recorder than at the unvisited ones. That is a people-specific signal, but only two cases.
 
-What would settle it is a cleaner field test: walking-only visits with exact logged times for when people enter the forest, reach each recorder and leave, on days with similar weather, ideally with one recorder left undisturbed as a control, and played sounds with nobody nearby.
+The lesson is that comparing with normal days mixes in quiet days and evenings. The fair test is to compare recorders with each other at the same moment, which is the next slide.
 
-With the data we have, the next step is to get the times the team entered the forest on each visit day. Then we can see exactly when the quiet starts relative to people arriving, which is the early-warning question Sammy asked.
+## Slide 9: Near the team, the forest is slightly quieter
+
+This is the fairest test I could do with this data. I took all six recorders on every day the team was out, every 10 minutes from 6 am to 6:30 pm, and only compared recorders with each other at the same moment. Weather, light and the evening chorus are the same for all of them at that moment, so they cancel. Each recorder's own usual daily rhythm is removed too.
+
+Each recorder at each moment is labelled by how close in time the team was to it: arriving in 20 to 60 minutes, within 20 minutes, left 20 to 60 minutes ago, or 1 to 2 hours away, compared with recorders more than 2 hours from the team.
+
+Every bar points down: recorders near the team in time are quieter than the others at that same moment. For insects, the blue bars, it is about 1 decibel in every group. Taking all of them together, within 2 hours of the team, insects are 1.07 decibels quieter, and when I move the team's real schedule to random other recorders 2,000 times, only about 2 percent of those fake schedules look this quiet, so p = 0.02. Birds, the orange bars, lean the same way, about half a decibel, p = 0.09.
+
+What it does not show is a sharp change when people arrive: arriving, here and after all look alike. So it looks like a small, broad dampening while the team is in the area, rather than a clear early warning.
+
+One caveat: I chose to pool the groups after seeing that they all point the same way, so the 0.02 is best presented as a summary of this pattern.
+
+## Slide 10: The forest responds, but quietly
+
+To sum up where this leaves us.
+
+What holds up: comparing all six recorders at the same moment, so weather, light and the evening chorus cancel, recorders near the team in time are about 1 decibel quieter in the insect band, p = 0.02 from the random-schedule test, and birds lean the same way. A model that only hears sound above 2 kilohertz, with human sounds removed, also tells visit periods apart from normal ones. So people in the area do leave a mark on the forest's sound.
+
+What does not hold up: most of the bigger quiet we saw around visits, especially the 5 pm drops, also happened at recorders the team did not visit, so that part was the days and evenings, not the people. And there is no sharp change when people arrive, so I can't claim a clear early warning; birds at the next stop quieting while the team is one stop back is a lead, in 8 of 10 visits.
+
+What it means for a detector: the effect is small, about 1 decibel. That is too small to spot from one recorder on its own, because days and evenings vary far more than that. But it shows up when recorders are compared with each other at the same moment. So a practical approach is to watch for one recorder becoming quieter than its neighbours, in the insect and bird bands, rather than watching each recorder against its own past.
+
+Bottom line: people in the area leave a small, consistent mark on the soundscape, strongest in the insect chorus, and a model that hears only the forest can pick it up.

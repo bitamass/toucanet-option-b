@@ -7,6 +7,10 @@ rhythm) + effect of the team's distance in time. Reference = more than 2 h from 
   slots per group: approach 113, near 120, after 101, mid 264, far 1040
   slots per part of day: morning 749, afternoon 889
 
+ONE NUMBER: recorders within 2 h of the team (before or after) vs recorders more than 2 h away, same moment
+  bird 2-7 kHz   :  -0.55 dB   p(quieter)=0.091   p(two-sided)=0.176
+  insect 10-13 kHz:  -1.07 dB   p(quieter)=0.017   p(two-sided)=0.038
+
 BIRD 2-7 kHz   (dB vs far, same moment; p from fake schedules)
   APPROACH (team arrives in 20-60 min):  -0.12 dB   p(quieter)=0.391   p(two-sided)=0.796
   NEAR (within 20 min of the team) :  -0.61 dB   p(quieter)=0.156   p(two-sided)=0.293
