@@ -393,6 +393,16 @@ def fit(labels):
 
 
 real_lab = label(DT[C_d, C_s, C_r])
+
+
+def fit_pooled(labels):
+    """One number: within 2 h of the team (any of the four groups) vs far."""
+    X = twoway((labels != "far").astype(float))
+    if X.std() < 1e-9:
+        return np.nan, np.nan
+    return float(X @ Yb / (X @ X)), float(X @ Yi / (X @ X))
+
+
 C["bin"] = real_lab
 C["dt_min"] = DT[C_d, C_s, C_r]
 C["resid_bird"], C["resid_insect"] = Yb, Yi
@@ -400,13 +410,16 @@ C.to_csv(os.path.join(OUT, "same_moment_cells.csv"), index=False)
 real_b, real_i = fit(real_lab)
 
 print(f"Permutation test ({N_PERM} fake schedules)...")
-perm_b, perm_i = [], []
+perm_b, perm_i, perm_pool = [], [], []
+real_pool = fit_pooled(real_lab)
 for _ in range(N_PERM):
     P = np.array([rng5.permutation(len(RECS)) for _ in days])     # day x recorder -> source recorder
-    b, i_ = fit(label(DT[C_d, C_s, P[C_d, C_r]]))
+    lab = label(DT[C_d, C_s, P[C_d, C_r]])
+    b, i_ = fit(lab)
     perm_b.append(b)
     perm_i.append(i_)
-perm_b, perm_i = np.array(perm_b), np.array(perm_i)
+    perm_pool.append(fit_pooled(lab))
+perm_b, perm_i, perm_pool = np.array(perm_b), np.array(perm_i), np.array(perm_pool)
 
 
 def pvals(real, perm, k):
@@ -422,6 +435,13 @@ out = ["SAME MOMENT, ALL RECORDERS: are recorders near the team quieter than the
        "rhythm) + effect of the team's distance in time. Reference = more than 2 h from any team event at that recorder.", "",
        "  slots per group: " + ", ".join(f"{b} {int((real_lab == b).sum())}" for b in BINS + ["far"]),
        "  slots per part of day: " + f"morning {int((C.slot < 720).sum())}, afternoon {int((C.slot >= 720).sum())}", ""]
+out.append("ONE NUMBER: recorders within 2 h of the team (before or after) vs recorders more than 2 h away, same moment")
+for k, band in enumerate(["bird 2-7 kHz   ", "insect 10-13 kHz"]):
+    pr = perm_pool[:, k][~np.isnan(perm_pool[:, k])]
+    one = (1 + (pr <= real_pool[k]).sum()) / (1 + len(pr))
+    two = (1 + (np.abs(pr) >= abs(real_pool[k])).sum()) / (1 + len(pr))
+    out.append(f"  {band}: {real_pool[k]:+6.2f} dB   p(quieter)={one:.3f}   p(two-sided)={two:.3f}")
+out.append("")
 desc = {"approach": "APPROACH (team arrives in 20-60 min)", "near": "NEAR (within 20 min of the team) ",
         "after": "AFTER (team left 20-60 min ago)   ", "mid": "MID (60-120 min from the team)    "}
 for band, real, perm in [("BIRD 2-7 kHz", real_b, perm_b), ("INSECT 10-13 kHz", real_i, perm_i)]:
